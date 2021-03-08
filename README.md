@@ -9,7 +9,7 @@ Authors
 JMMM
 - xlogin01 jmeno prijmeni 
 - xlogin02 jmeno prijmeni 
-- xlogin03 jmeno prijmeni 
+- xmazak02 Júlia Mazáková 
 - xmatus36 Matej Matuška 
 
 License
