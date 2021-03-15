@@ -55,6 +55,7 @@
     <Compile Include="GuiCalc.Designer.cs">
       <DependentUpon>GuiCalc.cs</DependentUpon>
     </Compile>
+    <Compile Include="MathLib\Mymath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GuiCalc.resx">
       <DependentUpon>GuiCalc.cs</DependentUpon>
