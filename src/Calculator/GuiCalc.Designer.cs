@@ -35,14 +35,14 @@ namespace IVS_GUI
         private void InitializeComponent()
         {
             this.Outcome = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
+
             this.buttonadd = new System.Windows.Forms.Button();
             this.buttonsub = new System.Windows.Forms.Button();
             this.buttondiv = new System.Windows.Forms.Button();
             this.buttonmul = new System.Windows.Forms.Button();
             this.buttondot = new System.Windows.Forms.Button();
             this.buttonend = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+
             this.button7 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -68,16 +68,7 @@ namespace IVS_GUI
             this.Outcome.Size = new System.Drawing.Size(0, 32);
             this.Outcome.TabIndex = 18;
             this.Outcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // button15
-            // 
-            this.button15.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.button15.Location = new System.Drawing.Point(142, 326);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(133, 42);
-            this.button15.TabIndex = 17;
-            this.button15.Text = "button15";
-            this.button15.UseVisualStyleBackColor = true;
+
             // 
             // buttonadd
             // 
@@ -150,16 +141,7 @@ namespace IVS_GUI
             this.buttonend.Text = "=";
             this.buttonend.UseVisualStyleBackColor = true;
             this.buttonend.Click += new System.EventHandler(this.buttonend_Click);
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(281, 326);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(133, 42);
-            this.button10.TabIndex = 12;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = true;
+
             // 
             // button7
             // 
@@ -331,14 +313,14 @@ namespace IVS_GUI
             this.tableLayoutPanel1.Controls.Add(this.button6, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.button5, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.button7, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.button10, 2, 3);
+
             this.tableLayoutPanel1.Controls.Add(this.buttonend, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.buttondot, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.buttonmul, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.buttondiv, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.buttonsub, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.buttonadd, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.button15, 1, 3);
+
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
