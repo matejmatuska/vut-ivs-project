@@ -17,6 +17,7 @@ namespace IVS_GUI
 
         private int integer;
         private string current;
+        private string history;
         public GuiKalk() : base()
         {
             InitializeComponent();
@@ -85,9 +86,17 @@ namespace IVS_GUI
             textBoxCurrent.Text = current;
         }
 
+        private void buttonadd_Click(object sender, EventArgs e)
+        {
+            current += "+";
+            textBoxCurrent.Text = current;
+        }
 
-
-
+        private void buttonsub_Click(object sender, EventArgs e)
+        {
+            current += "-";
+            textBoxCurrent.Text = current;
+        }
 
 
         private void GuiKalk_KeyDown(object sender, KeyEventArgs e)
@@ -124,7 +133,82 @@ namespace IVS_GUI
                 case Keys.NumPad9:
                     button9_Click(sender, EventArgs.Empty);
                     break;
+                case Keys.D0:
+                    button0_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D1:
+                    button1_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D2:
+                    button2_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D3:
+                    button3_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D4:
+                    button4_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D5:
+                    button5_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D6:
+                    button6_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D7:
+                    button7_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D8:
+                    button8_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.D9:
+                    button9_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.Add:
+                    buttonadd_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.Back:
+                    buttonsub_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.Divide:
+                    buttondiv_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.Multiply:
+                    buttonmul_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.Oemplus:
+                    if (e.Shift)
+                    buttonend_Click(sender, EventArgs.Empty);
+                    break;
             }
+        }
+
+        private void buttonmul_Click(object sender, EventArgs e)
+        {
+            current += "*";
+            textBoxCurrent.Text = current;
+        }
+
+        private void buttondiv_Click(object sender, EventArgs e)
+        {
+            current += "/";
+            textBoxCurrent.Text = current;
+        }
+
+        private void buttondot_Click(object sender, EventArgs e)
+        {
+            current += ".";
+            textBoxCurrent.Text = current;
+        }
+
+        private void buttonend_Click(object sender, EventArgs e)
+        {
+            history = Environment.NewLine + current;
+            textBoxHistory.AppendText(history);
+            current = "";
+            textBoxCurrent.Text = current;
+            textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
+            
+            //TODO poslat do process layeru
         }
     }
 }
