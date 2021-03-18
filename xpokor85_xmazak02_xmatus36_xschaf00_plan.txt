@@ -1,0 +1,64 @@
+1. Basic Information about project
+	- Our main system is Windows
+	- Main language is C# (C-Sharp, .cs)
+	- App type is WinForm
+	- Main IDE is Visual Studio 2019 and Rider from JetBrains
+	
+	Working students
+	-xpokor85 - Pokorný Martin
+	-xmazak02 - Mazáková Júlia
+	-xmatus36 - Matuška Matej 
+	-xschaf00 - Schafer Matěj 
+
+2. Deadlines
+	- 19.3 - Project Plan
+	- 19.3 - Setting up all parts of project (Gui, App, Library, Tests) and uploading them to repository
+	- 27.3 - Premature end of project development
+	- 3.4  - Unity of Program and Libraries.
+	- 10.4  - Unity of all parts of program - debugging of whole project
+	- 17.4 - Creating of documentation and Installer
+
+Warning! : All given dates are for orientation only and can be moved by few days max.
+
+3. Individual projects and their solvers
+	-xpokor85 Pokorný Martin
+		-Project plan
+		-Initialize project in Visual Studio
+		-Making GUI of project
+		-Linking GUI with Process program
+		-Second solver for Process program
+	
+	-xmazak02 Mazáková Júlia
+		-Making of Tests
+		-Second solver of GUI
+		-Profiling
+
+	-xmatus36 Matuška Matej
+		-Making process program of Project
+		-Administrate GIT
+		-Creating Makefile
+		-Second Solver of Libraries
+	
+	-xschaf00 Schafer Matěj
+		-Making of Math Libraries 
+		-Second Solver of Tests
+
+	-Together tasks
+		-Making Documentation and Installer
+		-Creation of mockup
+	 	-Self reflection of team - reflection.txt
+		-Self reflection of individuals - xlogin##_problems.txt
+		-Evaluation of our thought before project and after.
+		-PDF presentation for our defense
+
+4. Communicating channels and rules
+	-Main communication channel is Discord where we can have long private converstaions and adjust our coding according to each other (for example: linking GUI and process layer) 
+	-Main videoconference is Discord, allowing to stream multiple desktops at one time. Easy to join and easy to use
+	-Most long-lasting conferences will be planned through doodle
+	-For deciding we use Jira
+
+5. Version Control Informations
+	-VCS: Git
+	-Hosting: https://github.com/
+	-Repository link: https://github.com/matejmatuska/vut-ivs-project
+	-Owner of repository is xmatus36 - Matuška Matej
