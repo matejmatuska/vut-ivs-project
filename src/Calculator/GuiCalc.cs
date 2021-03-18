@@ -19,7 +19,7 @@ namespace IVS_GUI
         private string integer;
         private string current;
         private string history;
-
+        private MathProb subProb;
         
         public class MathProb
         {
@@ -28,6 +28,7 @@ namespace IVS_GUI
             private ushort[] indOp;
             private List<MathProb> undeProbs =  new List<MathProb>();
             private int Index = 0;
+            
 
             public MathProb()
             {
@@ -43,7 +44,7 @@ namespace IVS_GUI
             public void probAppend(MathProb prob)
             {
                 prob.Index = numbers.Count;
-                undeProbs.Append(prob);
+                undeProbs.Add(prob);
             }
 
             public List<int> getNumbers()
@@ -142,36 +143,82 @@ namespace IVS_GUI
             integer += "0";
             textBoxCurrent.Text = current;
         }
+        
+        private void buttonlb_Click(object sender, EventArgs e)
+        {
+            current += "(";
+            textBoxCurrent.Text = current;
+            subProb = new MathProb();
+        }
+
+        private void buttonrb_Click_1(object sender, EventArgs e)
+        {
+            current += ")";
+            textBoxCurrent.Text = current;
+            subProb.intAppend(' ', integer);
+            prob.probAppend(subProb);
+            subProb = null;
+
+        }
 
         private void buttonadd_Click(object sender, EventArgs e)
         {
             current += "+";
-            prob.intAppend('+', integer);
+            
             textBoxCurrent.Text = current;
+            if (subProb == null)
+            {
+                prob.intAppend('+', integer);
+            }
+            else
+            {
+                subProb.intAppend('+', integer);
+            }
             integer = "";
         }
 
         private void buttonsub_Click(object sender, EventArgs e)
         {
             current += "-";
-            prob.intAppend('-', integer);
             textBoxCurrent.Text = current;
+            if (subProb == null)
+            {
+                prob.intAppend('-', integer);
+            }
+            else
+            {
+                subProb.intAppend('-', integer);
+            }
             integer = "";
         }
 
         private void buttonmul_Click(object sender, EventArgs e)
         {
             current += "*";
-            prob.intAppend('*', integer);
             textBoxCurrent.Text = current;
+            if (subProb == null)
+            {
+                prob.intAppend('*', integer);
+            }
+            else
+            {
+                subProb.intAppend('*', integer);
+            }
             integer = "";
         }
 
         private void buttondiv_Click(object sender, EventArgs e)
         {
             current += "/";
-            prob.intAppend('/', integer);
             textBoxCurrent.Text = current;
+            if (subProb == null)
+            {
+                prob.intAppend('/', integer);
+            }
+            else
+            {
+                subProb.intAppend('/', integer);
+            }
             integer = "";
         }
 
@@ -275,10 +322,5 @@ namespace IVS_GUI
             }
         }
 
-
-        private void buttonrb_Click(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

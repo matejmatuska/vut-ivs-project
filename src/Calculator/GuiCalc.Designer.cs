@@ -35,14 +35,12 @@ namespace IVS_GUI
         private void InitializeComponent()
         {
             this.Outcome = new System.Windows.Forms.Label();
-
             this.buttonadd = new System.Windows.Forms.Button();
             this.buttonsub = new System.Windows.Forms.Button();
             this.buttondiv = new System.Windows.Forms.Button();
             this.buttonmul = new System.Windows.Forms.Button();
             this.buttondot = new System.Windows.Forms.Button();
             this.buttonend = new System.Windows.Forms.Button();
-
             this.button7 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -56,6 +54,8 @@ namespace IVS_GUI
             this.button1 = new System.Windows.Forms.Button();
             this.button0 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonlb = new System.Windows.Forms.Button();
+            this.buttonrb = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,6 @@ namespace IVS_GUI
             this.Outcome.Size = new System.Drawing.Size(0, 32);
             this.Outcome.TabIndex = 18;
             this.Outcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
             // 
             // buttonadd
             // 
@@ -141,7 +140,6 @@ namespace IVS_GUI
             this.buttonend.Text = "=";
             this.buttonend.UseVisualStyleBackColor = true;
             this.buttonend.Click += new System.EventHandler(this.buttonend_Click);
-
             // 
             // button7
             // 
@@ -313,14 +311,14 @@ namespace IVS_GUI
             this.tableLayoutPanel1.Controls.Add(this.button6, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.button5, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.button7, 0, 6);
-
             this.tableLayoutPanel1.Controls.Add(this.buttonend, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.buttondot, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.buttonmul, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.buttondiv, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.buttonsub, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.buttonadd, 3, 4);
-
+            this.tableLayoutPanel1.Controls.Add(this.buttonlb, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.buttonrb, 2, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -334,6 +332,30 @@ namespace IVS_GUI
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.536585F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(557, 564);
             this.tableLayoutPanel1.TabIndex = 24;
+            // 
+            // buttonlb
+            // 
+            this.buttonlb.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonlb.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonlb.Location = new System.Drawing.Point(142, 326);
+            this.buttonlb.Name = "buttonlb";
+            this.buttonlb.Size = new System.Drawing.Size(133, 42);
+            this.buttonlb.TabIndex = 18;
+            this.buttonlb.Text = "(";
+            this.buttonlb.UseVisualStyleBackColor = true;
+            this.buttonlb.Click += new System.EventHandler(this.buttonlb_Click);
+            // 
+            // buttonrb
+            // 
+            this.buttonrb.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonrb.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonrb.Location = new System.Drawing.Point(281, 326);
+            this.buttonrb.Name = "buttonrb";
+            this.buttonrb.Size = new System.Drawing.Size(133, 42);
+            this.buttonrb.TabIndex = 19;
+            this.buttonrb.Text = ")";
+            this.buttonrb.UseVisualStyleBackColor = true;
+            this.buttonrb.Click += new System.EventHandler(this.buttonrb_Click_1);
             // 
             // GuiKalk
             // 
@@ -350,6 +372,9 @@ namespace IVS_GUI
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button buttonlb;
+        private System.Windows.Forms.Button buttonrb;
 
         private System.Windows.Forms.Button button0;
         private System.Windows.Forms.Button button1;
