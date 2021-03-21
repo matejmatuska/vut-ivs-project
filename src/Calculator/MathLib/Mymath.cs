@@ -37,5 +37,15 @@ namespace MyMath
             throw new NotImplementedException();
            
         }
+
+        public double Fact(double input1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double Pow(double input1, double input2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

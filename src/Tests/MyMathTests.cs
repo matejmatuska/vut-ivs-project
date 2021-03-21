@@ -16,10 +16,10 @@ namespace MSTest_Test_Project
             //create an instance to test
             Mymathclass math = new Mymathclass();
             //are equal
-            Assert.AreEqual(5,math.Sum(0,5));
+            Assert.AreEqual(5, math.Sum(0, 5));
             Assert.AreEqual(-48, math.Sum(-49, 1));
             Assert.AreEqual(-25, math.Sum(-15, -10));
-            Assert.AreEqual(-2.50000, math.Sum(-3, +0.50000),Accuracy);
+            Assert.AreEqual(-2.50000, math.Sum(-3, +0.50000), Accuracy);
             Assert.AreEqual(0, math.Sum(0, 0));
             //false
             Assert.AreNotEqual(352, math.Sum(0, 8));
@@ -37,16 +37,16 @@ namespace MSTest_Test_Project
             // Try a range of values.
             for (double input1 = -153.25; input1 < 186.84; input1 += 4.2)
             {
-                for (double input2 = 186.84; input2> -153.25; input2 -= 4.2)
-                    SumOneValue(math,input1,input2);
+                for (double input2 = 186.84; input2 > -153.25; input2 -= 4.2)
+                    SumOneValue(math, input1, input2);
             }
         }
 
-        private void SumOneValue(Mymathclass math , double input1 , double input2)
+        private void SumOneValue(Mymathclass math, double input1, double input2)
         {
             double expected = input1 + input2;
             double result = math.Sum(input1, input2);
-            Assert.AreEqual(expected,result,Accuracy);
+            Assert.AreEqual(expected, result, Accuracy);
         }
         [TestMethod]
         //test subtraction
@@ -132,7 +132,7 @@ namespace MSTest_Test_Project
         //test division
         public void DivTest()
         {
-      
+
             // Create an instance to test:
             Mymathclass math = new Mymathclass();
             //divide by zero 
@@ -140,7 +140,7 @@ namespace MSTest_Test_Project
             {
                 math.Div(42, 0);
             }
-            catch(DivideByZeroException)
+            catch (DivideByZeroException)
             {
 
             }
@@ -156,12 +156,12 @@ namespace MSTest_Test_Project
             Assert.AreEqual(2, math.Div(10, 5));
             Assert.AreEqual(1, math.Div(-564, -564));
             Assert.AreEqual(-6, math.Div(42, -7));
-            Assert.AreEqual(2.50000, math.Div(5, 2),Accuracy);
+            Assert.AreEqual(2.50000, math.Div(5, 2), Accuracy);
             //false
             Assert.AreNotEqual(0, math.Div(-50, 2));
             Assert.AreNotEqual(-9, math.Div(-3, -3));
             Assert.AreNotEqual(0.06000, math.Div(1.20000, 2), Accuracy);
-            Assert.AreNotEqual(-2, math.Mul(10,10));
+            Assert.AreNotEqual(-2, math.Mul(10, 10));
 
 
         }
@@ -187,5 +187,142 @@ namespace MSTest_Test_Project
             Assert.AreEqual(expected, result, Accuracy);
         }
 
+        [TestMethod]
+        // test factorial
+        public void FactTest()
+        {
+            //create an instance to test
+            Mymathclass math = new Mymathclass();
+            try
+            {
+                math.Fact(-8);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+
+            try
+            {
+                math.Fact(5.258);
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+
+            }
+            //are equal
+            Assert.AreEqual(0, math.Fact(1));
+            Assert.AreEqual(6, math.Fact(3));
+            Assert.AreEqual(362880, math.Fact(9));
+            Assert.AreEqual(2.43290e18, math.Fact(20), Accuracy);
+            //false
+            Assert.AreNotEqual(5, math.Fact(5));
+            Assert.AreNotEqual(1, math.Fact(1));
+            Assert.AreNotEqual(32, math.Fact(64));
+
+            
+          }
+        [TestMethod]
+        // test factorial with inputs from range
+        public void FactRangeTest()
+        {
+            // Create an instance to test.
+            Mymathclass math = new Mymathclass();
+
+            // Try a range of values.
+            for (double input1 = 4; input1 < 18; input1 += 1)
+            { 
+                    FactOneValue(math, input1);
+            }
+        }
+
+        private void FactOneValue(Mymathclass math, double input1)
+        {
+            double expected = input1;
+           for (int i = 1; i<input1;i++)
+            {
+                expected *= i;
+
+            }
+            double result = math.Fact(input1);
+            Assert.AreEqual(expected, result, Accuracy);
+        }
+        [TestMethod]
+        // test factorial
+        public void PowTest()
+        {
+            //create an instance to test
+            Mymathclass math = new Mymathclass();
+            try
+            {
+                math.Pow(2,-5);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+
+            try
+            {
+                math.Pow(14, 2.5);
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+
+            }
+            //are equal
+            Assert.AreEqual(1, math.Pow(54, 0));
+            Assert.AreEqual(1, math.Pow(1, 84));
+            Assert.AreEqual(27, math.Pow(3, 3));
+            Assert.AreEqual(-16, math.Pow(-4, 2));
+            Assert.AreEqual(140.608, math.Pow(5.2, 3), Accuracy);
+            //false
+            Assert.AreNotEqual(0, math.Pow(2, 0));
+            Assert.AreNotEqual(20, math.Pow(1, 20));
+            Assert.AreNotEqual(9,math.Pow(3, 3));
+            Assert.AreNotEqual(16, math.Pow(-4, 2));
+            Assert.AreNotEqual(140.61, math.Pow(5.2, 3), Accuracy);
+        }
+
+        [TestMethod]
+        // test divison with inputs from range
+        public void PowRangeTest()
+        {
+            // Create an instance to test.
+            Mymathclass math = new Mymathclass();
+
+            // Try a range of values.
+            for (double input1 = -153.25; input1 < 186.84; input1 += 4.2)
+            {
+                for (double input2 = 1; input2 < 81; input2 ++)
+                   PowOneValue(math, input1, input2);
+            }
+        }
+
+        private void PowOneValue(Mymathclass math, double input1, double input2)
+        {
+            //todo incorrect function
+            double power(double x, int y)
+            {
+                double temp;
+                if (y == 0)
+                    return 1;
+                temp = power(x, y / 2);
+                if (y % 2 == 0)
+                    return temp * temp;
+                else
+                {
+                    if (y > 0)
+                        return x * temp * temp;
+                    else
+                        return (temp * temp) / x;
+                }
+            }
+            int res = Convert.ToInt32(input2);
+            double expected = power(input1, res);
+            double result = math.Pow(input1, input2);
+            Assert.AreEqual(expected, result, Accuracy);
+        }
+
     }
-}
+  }
