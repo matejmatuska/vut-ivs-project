@@ -206,7 +206,7 @@ namespace MSTest_Test_Project
             {
                 math.Fact(5.258);
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
 
             }
@@ -220,8 +220,8 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(1, math.Fact(1));
             Assert.AreNotEqual(32, math.Fact(64));
 
-            
-          }
+
+        }
         [TestMethod]
         // test factorial with inputs from range
         public void FactRangeTest()
@@ -231,15 +231,15 @@ namespace MSTest_Test_Project
 
             // Try a range of values.
             for (double input1 = 4; input1 < 18; input1 += 1)
-            { 
-                    FactOneValue(math, input1);
+            {
+                FactOneValue(math, input1);
             }
         }
 
         private void FactOneValue(Mymathclass math, double input1)
         {
             double expected = input1;
-           for (int i = 1; i<input1;i++)
+            for (int i = 1; i < input1; i++)
             {
                 expected *= i;
 
@@ -255,7 +255,7 @@ namespace MSTest_Test_Project
             Mymathclass math = new Mymathclass();
             try
             {
-                math.Pow(2,-5);
+                math.Pow(2, -5);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -266,7 +266,7 @@ namespace MSTest_Test_Project
             {
                 math.Pow(14, 2.5);
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
 
             }
@@ -279,7 +279,7 @@ namespace MSTest_Test_Project
             //false
             Assert.AreNotEqual(0, math.Pow(2, 0));
             Assert.AreNotEqual(20, math.Pow(1, 20));
-            Assert.AreNotEqual(9,math.Pow(3, 3));
+            Assert.AreNotEqual(9, math.Pow(3, 3));
             Assert.AreNotEqual(16, math.Pow(-4, 2));
             Assert.AreNotEqual(140.61, math.Pow(5.2, 3), Accuracy);
         }
@@ -292,22 +292,21 @@ namespace MSTest_Test_Project
             Mymathclass math = new Mymathclass();
 
             // Try a range of values.
-            for (double input1 = -153.25; input1 < 186.84; input1 += 4.2)
+            for (double input1 = 153.25; input1 < 186.84; input1 += 4.2)
             {
-                for (double input2 = 1; input2 < 81; input2 ++)
-                   PowOneValue(math, input1, input2);
+                for (double input2 = 1; input2 < 10; input2++)
+                    PowOneValue(math, input1, input2);
             }
         }
 
         private void PowOneValue(Mymathclass math, double input1, double input2)
         {
-            //todo incorrect function
+
             double power(double x, int y)
             {
-                double temp;
                 if (y == 0)
                     return 1;
-                temp = power(x, y / 2);
+                double temp = power(x, y / 2);
                 if (y % 2 == 0)
                     return temp * temp;
                 else
@@ -321,8 +320,103 @@ namespace MSTest_Test_Project
             int res = Convert.ToInt32(input2);
             double expected = power(input1, res);
             double result = math.Pow(input1, input2);
-            Assert.AreEqual(expected, result, Accuracy);
+            Assert.AreEqual(expected, result, 1e-2);
         }
 
+        [TestMethod]
+        // test root function
+        public void RootTest()
+        {
+            //create an instance to test
+            Mymathclass math = new Mymathclass();
+            try
+            {
+                math.Pow(-10, 2);
+            }
+            catch (NotFiniteNumberException)
+            {
+
+            }
+
+            try
+            {
+                math.Pow(14, 0);
+            }
+            catch (DivideByZeroException)
+            {
+
+            }
+            //are equal
+            //root(x,n) = n √x 
+            Assert.AreEqual(7, math.Root(49, 2));
+            Assert.AreEqual(3, math.Root(27, 3));
+            Assert.AreEqual(5, math.Root(1953125, 9));
+            Assert.AreEqual(3.741657, math.Root(14, 2), Accuracy);
+            Assert.AreEqual(0, math.Root(0, 0));
+
+            //not equal
+            Assert.AreNotEqual(3, math.Root(8, 2));
+            Assert.AreNotEqual(-5, math.Root(0, 5));
+            Assert.AreNotEqual(3.85243, math.Root(14, 2), Accuracy);
+            Assert.AreNotEqual(3.33333, math.Root(10, 3), Accuracy);
+            Assert.AreNotEqual(1, math.Root(2, 2), Accuracy);
+
+
+        }
+        [TestMethod]
+        //range of values for sqrt function
+        public void SqrtRangeTest()
+        {
+            // Create an instance to test.
+            Mymathclass math = new Mymathclass();
+
+            // Try a range of values.
+            for (double input1 = 1; input1 < 100; input1++)
+                SqrtOneValue(math, input1);
+
+        }
+
+        private void SqrtOneValue(Mymathclass math, double input1)
+        {
+            double Sqrt(int x)
+            {
+
+                double root = 1;
+                int i = 0;
+                //The Babylonian Method for Computing Square Roots
+                while (true)
+                {
+                    i = i + 1;
+                    root = (x / root + root) / 2;
+                    if (i == x + 1) { break; }
+                }
+                return root;
+            }
+            int res = Convert.ToInt32(input1);
+            double expected = Sqrt(res);
+            double result = math.Root(input1, 2);
+            Assert.AreEqual(expected, result, 1e-2);
+        }
+
+        [TestMethod]
+        // test discriminant function
+        public void DiscTest()
+        {
+            Mymathclass math = new Mymathclass();
+            //are equal
+            Assert.AreEqual(76, math.Disc(3, 4, -5));
+            Assert.AreEqual(638.4, math.Disc(0.8, 25, -4.2), Accuracy);
+            Assert.AreEqual(0, math.Disc(0, 0, 0));
+            Assert.AreEqual(0, math.Disc(2, 4, 2));
+            Assert.AreEqual(-3, math.Disc(1, 1, 1));
+            //are not equal
+            Assert.AreNotEqual(-812.5, math.Disc(5, 2, 5),Accuracy);
+            Assert.AreNotEqual(-20, math.Disc(352, 2, 5.8), Accuracy);
+            Assert.AreNotEqual(1, math.Disc(1, 1, 1));
+            Assert.AreNotEqual(8, math.Disc(-8, 0, -80));
+            Assert.AreNotEqual(-3.5, math.Disc(25, 18, 1), Accuracy);
+
+        }
     }
-  }
+}
+
