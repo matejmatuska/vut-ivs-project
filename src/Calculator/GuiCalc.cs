@@ -21,13 +21,22 @@ namespace IVS_GUI
         private string history;
         private MathProb subProb;
         
+        /**
+         * MathProb
+         * Numbers is a list containing numbers given by user. First number is 0 
+         * Operations is a list containing ops given by user. Every operation is for number with index i+1 in numbers
+         * UndeProbs is a List of MathProbs. It contains another problems contained in main problem.
+         * (Brackets or operations that require own solution)
+         * @methods intAppend(char op, string number) Increase list of numbers and operands
+         *          probAppend(MathProb prob) Adds underProblem to main problem
+         */
         public class MathProb
         {
             private List<int> numbers = new List<int>();
             private List<char> operations = new List<char>();
-            private ushort[] indOp;
             private List<MathProb> undeProbs =  new List<MathProb>();
             private int Index = 0;
+            public string SpecOps = null;
             
 
             public MathProb()
@@ -71,7 +80,12 @@ namespace IVS_GUI
             InitializeComponent();
             this.KeyPreview = true;
         }
-
+        
+        /*
+         * EventHandler methods for Clicking on buttons
+         * Adds string of number to "current" and "integer"
+         * Updates Current text in GUI
+         */
         private void button1_Click(object sender, EventArgs e)
         {
             current += "1";
@@ -146,19 +160,23 @@ namespace IVS_GUI
         
         private void buttonlb_Click(object sender, EventArgs e)
         {
-            current += "(";
-            textBoxCurrent.Text = current;
-            subProb = new MathProb();
+            if (subProb == null)
+            {
+                current += "(";
+                textBoxCurrent.Text = current;
+                subProb = new MathProb();
+            }
         }
 
         private void buttonrb_Click_1(object sender, EventArgs e)
         {
-            current += ")";
-            textBoxCurrent.Text = current;
-            subProb.intAppend(' ', integer);
-            prob.probAppend(subProb);
-            subProb = null;
-
+            if(subProb != null){
+                current += ")";
+                textBoxCurrent.Text = current;
+                subProb.intAppend(' ', integer);
+                prob.probAppend(subProb);
+                subProb = null;
+            }
         }
 
         private void buttonadd_Click(object sender, EventArgs e)
@@ -220,6 +238,13 @@ namespace IVS_GUI
                 subProb.intAppend('/', integer);
             }
             integer = "";
+        }
+        
+        private void buttonSin_Click(object sender, EventArgs e)
+        {
+            current += "sin";
+            buttonlb_Click(sender, EventArgs.Empty);
+            subProb.SpecOps = "Sin";
         }
 
         private void buttondot_Click(object sender, EventArgs e)
@@ -321,6 +346,6 @@ namespace IVS_GUI
                     break;
             }
         }
-
+        
     }
 }

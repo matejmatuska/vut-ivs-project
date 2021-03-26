@@ -56,6 +56,7 @@ namespace IVS_GUI
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonlb = new System.Windows.Forms.Button();
             this.buttonrb = new System.Windows.Forms.Button();
+            this.buttonSin = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -269,6 +270,7 @@ namespace IVS_GUI
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
             this.button1.Location = new System.Drawing.Point(3, 374);
             this.button1.Name = "button1";
@@ -319,6 +321,7 @@ namespace IVS_GUI
             this.tableLayoutPanel1.Controls.Add(this.buttonadd, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.buttonlb, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonrb, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.buttonSin, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -357,6 +360,18 @@ namespace IVS_GUI
             this.buttonrb.UseVisualStyleBackColor = true;
             this.buttonrb.Click += new System.EventHandler(this.buttonrb_Click_1);
             // 
+            // buttonSin
+            // 
+            this.buttonSin.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSin.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonSin.Location = new System.Drawing.Point(3, 326);
+            this.buttonSin.Name = "buttonSin";
+            this.buttonSin.Size = new System.Drawing.Size(133, 42);
+            this.buttonSin.TabIndex = 20;
+            this.buttonSin.Text = "Sin";
+            this.buttonSin.UseVisualStyleBackColor = true;
+            this.buttonSin.Click += new System.EventHandler(this.buttonSin_Click);
+            // 
             // GuiKalk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +387,8 @@ namespace IVS_GUI
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button buttonSin;
 
         private System.Windows.Forms.Button buttonlb;
         private System.Windows.Forms.Button buttonrb;
