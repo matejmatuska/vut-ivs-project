@@ -8,7 +8,7 @@ Authors
 
 JMMM
 - xpokor85 Martin Pokorný
-- xschaf00 Matìj Schäfer 
+- xschaf00 Matej Schäfer 
 - xmazak02 Júlia Mazáková 
 - xmatus36 Matej Matuška 
 
