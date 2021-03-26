@@ -61,4 +61,5 @@ Warning! : All given dates are for orientation only and can be moved by few days
 	-VCS: Git
 	-Hosting: https://github.com/
 	-Repository link: https://github.com/matejmatuska/vut-ivs-project
+	-Přístup byl přidělen pro email ivs.kontrola@gmail.com
 	-Owner of repository is xmatus36 - Matuška Matej
