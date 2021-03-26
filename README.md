@@ -8,7 +8,7 @@ Authors
 
 JMMM
 - xpokor85 Martin Pokorný
-- xlogin02 jmeno prijmeni 
+- xschaf00 Mat�j Sch�fer 
 - xmazak02 Júlia Mazáková 
 - xmatus36 Matej Matuška 
 
