@@ -1,52 +1,52 @@
 ﻿using System;
 
-namespace MyMath
+namespace MyMathLib
 {
 
 
-    public class Mymathclass
+    public static class MathLib
     {
-        public double Sum(double input1, double input2)
+        public static double Sum(double input1, double input2)
         {
             throw new NotImplementedException();
 
 
         }
 
-        public double Sub(double input1, double input2)
+        public static double Sub(double input1, double input2)
         {
             throw new NotImplementedException();
 
         }
 
-        public double Mul(double input1, double input2)
+        public static double Mul(double input1, double input2)
         {
             throw new NotImplementedException();
 
         }
 
-        public double Div(double input1, double input2)
+        public static double Div(double input1, double input2)
         {
             throw new NotImplementedException();
 
         }
 
-        public double Fact(double input1)
+        public static double Fact(double input1)
         {
             throw new NotImplementedException();
         }
 
-        public double Pow(double input1, double input2)
+        public static double Pow(double input1, double input2)
         {
             throw new NotImplementedException();
         }
 
-        public double Root(double input1, double input2)
+        public static double Root(double input1, double input2)
         {
             throw new NotImplementedException();
         }
 
-        public double Disc(double a, double b, double c)
+        public static double Disc(double a, double b, double c)
         {
             throw new NotImplementedException();
         }
