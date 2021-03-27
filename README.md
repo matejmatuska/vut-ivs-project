@@ -7,10 +7,10 @@ Authors
 ------
 
 JMMM
-- xpokor85 Martin PokornÃ½
-- xlogin02 jmeno prijmeni 
-- xmazak02 JÃºlia MazÃ¡kovÃ¡ 
-- xmatus36 Matej MatuÅ¡ka 
+- xpokor85 Martin Pokorný
+- xschaf00 Matej Schäfer 
+- xmazak02 Júlia Mazáková 
+- xmatus36 Matej Matuška 
 
 License
 -------
