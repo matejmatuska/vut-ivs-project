@@ -32,7 +32,7 @@ namespace Calc
          * 
          * @param num The number to add to calculation, as string
          * @throw Exception if num cannot be converted to number
-         * @throw Exception when two numbers were entered consecutively and num is not first number in the calculation
+         * @throw Exception when two numbers were entered consecutively without an operator between them
          * @return returns intermediate result as string
          */
         public string Append(string num)
