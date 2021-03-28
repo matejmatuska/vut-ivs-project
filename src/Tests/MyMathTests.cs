@@ -209,7 +209,7 @@ namespace MSTest_Test_Project
             Assert.AreEqual(1, MathLib.Pow(54, 0));
             Assert.AreEqual(1, MathLib.Pow(1, 84));
             Assert.AreEqual(27, MathLib.Pow(3, 3));
-            Assert.AreEqual(-16, MathLib.Pow(-4, 2));
+            Assert.AreEqual(16, MathLib.Pow(-4, 2));
             Assert.AreEqual(140.608, MathLib.Pow(5.2, 3), Accuracy);
             Assert.AreEqual(6.979147079e42, MathLib.Pow(240, 18),Accuracy);
             Assert.AreEqual(643.586161, MathLib.Pow(25.369, 2), Accuracy);
@@ -252,11 +252,11 @@ namespace MSTest_Test_Project
             //root(x,n) = n √x 
             Assert.AreEqual(7, MathLib.Root(49, 2));
             Assert.AreEqual(3, MathLib.Root(27, 3));
-            Assert.AreEqual(5, MathLib.Root(1953125, 9));
+            Assert.AreEqual(5, MathLib.Root(390625, 8));
             Assert.AreEqual(3.741657, MathLib.Root(14, 2), Accuracy);
             Assert.AreEqual(0, MathLib.Root(0, 0));
             Assert.AreEqual(0.1111111, MathLib.Root(81,-2), Accuracy);
-            Assert.AreEqual(13, MathLib.Root(62748517, 7));
+            Assert.AreEqual(13, MathLib.Root(815730721, 8));
             Assert.AreEqual(0.25, MathLib.Root(0.0625, 2), Accuracy);
 
 
