@@ -158,14 +158,14 @@ namespace MSTest_Test_Project
             Assert.AreEqual(1, MathLib.Fact(1));
             Assert.AreEqual(6, MathLib.Fact(3));
             Assert.AreEqual(362880, MathLib.Fact(9));
-            Assert.AreEqual(2.432902008e18, MathLib.Fact(20), Accuracy);
+            Assert.AreEqual(2.43290200817664e18, MathLib.Fact(20), Accuracy);
             Assert.AreEqual(1, MathLib.Fact(0));
             Assert.AreEqual(2, MathLib.Fact(2));
             Assert.AreEqual(24, MathLib.Fact(4));
             Assert.AreEqual(120, MathLib.Fact(5));
             //false
             Assert.AreNotEqual(5, MathLib.Fact(5));
-            Assert.AreNotEqual(1, MathLib.Fact(1));
+            Assert.AreNotEqual(0, MathLib.Fact(1));
             Assert.AreNotEqual(32, MathLib.Fact(64));
             Assert.AreNotEqual(0, MathLib.Fact(0));
             Assert.AreNotEqual(3628800, MathLib.Fact(9));
@@ -211,14 +211,14 @@ namespace MSTest_Test_Project
             Assert.AreEqual(27, MathLib.Pow(3, 3));
             Assert.AreEqual(16, MathLib.Pow(-4, 2));
             Assert.AreEqual(140.608, MathLib.Pow(5.2, 3), Accuracy);
-            Assert.AreEqual(6.979147079e42, MathLib.Pow(240, 18),Accuracy);
+            Assert.AreEqual(6.979147079584381377970176e42, MathLib.Pow(240, 18),Accuracy);
             Assert.AreEqual(643.586161, MathLib.Pow(25.369, 2), Accuracy);
-            Assert.AreEqual(-1.060449937, MathLib.Pow(-13, 9), Accuracy);
+            Assert.AreEqual(-10604499373, MathLib.Pow(-13, 9), Accuracy);
             //false
             Assert.AreNotEqual(0, MathLib.Pow(2, 0));
             Assert.AreNotEqual(20, MathLib.Pow(1, 20));
             Assert.AreNotEqual(9, MathLib.Pow(3, 3));
-            Assert.AreNotEqual(16, MathLib.Pow(-4, 2));
+            Assert.AreNotEqual(-16, MathLib.Pow(-4, 2));
             Assert.AreNotEqual(140.61, MathLib.Pow(5.2, 3), Accuracy);
             Assert.AreNotEqual(-42, MathLib.Pow(42,1));
             Assert.AreNotEqual(4.12549e38, MathLib.Pow(132, 5), Accuracy);
@@ -233,7 +233,7 @@ namespace MSTest_Test_Project
            
             try
             {
-                MathLib.Pow(-10, 2);
+                MathLib.Root(-10, 2);
             }
             catch (InvalidOperationException)
             {
@@ -242,7 +242,7 @@ namespace MSTest_Test_Project
 
             try
             {
-                MathLib.Pow(14, 0);
+                MathLib.Root(14, 0);
             }
             catch (DivideByZeroException)
             {
