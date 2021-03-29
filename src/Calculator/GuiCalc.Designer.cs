@@ -57,6 +57,10 @@ namespace IVS_GUI
             this.buttonlb = new System.Windows.Forms.Button();
             this.buttonrb = new System.Windows.Forms.Button();
             this.buttonSin = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonexp = new System.Windows.Forms.Button();
+            this.buttonsqr = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -322,6 +326,10 @@ namespace IVS_GUI
             this.tableLayoutPanel1.Controls.Add(this.buttonlb, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonrb, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonSin, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.buttonReset, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.buttonDelete, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.buttonexp, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.buttonsqr, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -372,6 +380,55 @@ namespace IVS_GUI
             this.buttonSin.UseVisualStyleBackColor = true;
             this.buttonSin.Click += new System.EventHandler(this.buttonSin_Click);
             // 
+            // buttonReset
+            // 
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonReset.Location = new System.Drawing.Point(420, 326);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(134, 42);
+            this.buttonReset.TabIndex = 21;
+            this.buttonReset.Text = "CE";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonDelete.Location = new System.Drawing.Point(420, 278);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.buttonDelete.Size = new System.Drawing.Size(134, 42);
+            this.buttonDelete.TabIndex = 22;
+            this.buttonDelete.Text = "<--";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonexp
+            // 
+            this.buttonexp.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonexp.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonexp.Location = new System.Drawing.Point(281, 278);
+            this.buttonexp.Name = "buttonexp";
+            this.buttonexp.Size = new System.Drawing.Size(133, 42);
+            this.buttonexp.TabIndex = 23;
+            this.buttonexp.Text = "^n";
+            this.buttonexp.UseVisualStyleBackColor = true;
+            this.buttonexp.Click += new System.EventHandler(this.buttonexp_Click);
+            // 
+            // buttonsqr
+            // 
+            this.buttonsqr.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonsqr.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonsqr.Location = new System.Drawing.Point(142, 278);
+            this.buttonsqr.Name = "buttonsqr";
+            this.buttonsqr.Size = new System.Drawing.Size(133, 42);
+            this.buttonsqr.TabIndex = 24;
+            this.buttonsqr.Text = "√";
+            this.buttonsqr.UseVisualStyleBackColor = true;
+            this.buttonsqr.Click += new System.EventHandler(this.buttonsqr_Click);
+            // 
             // GuiKalk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,6 +445,13 @@ namespace IVS_GUI
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Button buttonsqr;
+
+        private System.Windows.Forms.Button buttonexp;
+
+
+        private System.Windows.Forms.Button buttonDelete;
+
         private System.Windows.Forms.Button buttonSin;
 
         private System.Windows.Forms.Button buttonlb;
@@ -395,7 +459,7 @@ namespace IVS_GUI
 
         private System.Windows.Forms.Button button0;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

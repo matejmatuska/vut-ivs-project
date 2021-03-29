@@ -9,15 +9,18 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Calc;
 
 namespace IVS_GUI
 {
     public partial class GuiKalk : Form
     {
+        private Evaluator eval = new Evaluator();
         private int[] Number;
 
         private string integer;
         private string current;
+        private string result;
         private string history;
         private MathProb subProb;
         
@@ -27,7 +30,7 @@ namespace IVS_GUI
          * Operations is a list containing ops given by user. Every operation is for number with index i+1 in numbers
          * UndeProbs is a List of MathProbs. It contains another problems contained in main problem.
          * (Brackets or operations that require own solution)
-         * @methods intAppend(char op, string number) Increase list of numbers and operands
+         * <methodsname="MathProb"> intAppend(char op, string number) Increase list of numbers and operands
          *          probAppend(MathProb prob) Adds underProblem to main problem
          */
         public class MathProb
@@ -181,32 +184,23 @@ namespace IVS_GUI
 
         private void buttonadd_Click(object sender, EventArgs e)
         {
-            current += "+";
             
+            current += "+";
             textBoxCurrent.Text = current;
-            if (subProb == null)
-            {
-                prob.intAppend('+', integer);
-            }
-            else
-            {
-                subProb.intAppend('+', integer);
-            }
+            
+            eval.Append(integer);
+            eval.Append(Operator.Sum);
+            
             integer = "";
+
         }
 
         private void buttonsub_Click(object sender, EventArgs e)
         {
             current += "-";
             textBoxCurrent.Text = current;
-            if (subProb == null)
-            {
-                prob.intAppend('-', integer);
-            }
-            else
-            {
-                subProb.intAppend('-', integer);
-            }
+            eval.Append(integer);
+            eval.Append(Operator.Sub);
             integer = "";
         }
 
@@ -214,14 +208,8 @@ namespace IVS_GUI
         {
             current += "*";
             textBoxCurrent.Text = current;
-            if (subProb == null)
-            {
-                prob.intAppend('*', integer);
-            }
-            else
-            {
-                subProb.intAppend('*', integer);
-            }
+            eval.Append(integer);
+            eval.Append(Operator.Mul);
             integer = "";
         }
 
@@ -229,15 +217,10 @@ namespace IVS_GUI
         {
             current += "/";
             textBoxCurrent.Text = current;
-            if (subProb == null)
-            {
-                prob.intAppend('/', integer);
-            }
-            else
-            {
-                subProb.intAppend('/', integer);
-            }
+            eval.Append(integer);
+            eval.Append(Operator.Div);
             integer = "";
+            
         }
         
         private void buttonSin_Click(object sender, EventArgs e)
@@ -249,7 +232,8 @@ namespace IVS_GUI
 
         private void buttondot_Click(object sender, EventArgs e)
         {
-            current += ".";
+            current += ",";
+            integer += ",";
             textBoxCurrent.Text = current;
         }
 
@@ -257,10 +241,11 @@ namespace IVS_GUI
         {
             history = Environment.NewLine + current;
             textBoxHistory.AppendText(history);
-            current = "";
+            current = eval.Append(integer);
             textBoxCurrent.Text = current;
             textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
-            
+            integer = current;
+
             //TODO poslat do process layeru
         }
         
@@ -331,7 +316,7 @@ namespace IVS_GUI
                 case Keys.Add:
                     buttonadd_Click(sender, EventArgs.Empty);
                     break;
-                case Keys.Back:
+                case Keys.Subtract:
                     buttonsub_Click(sender, EventArgs.Empty);
                     break;
                 case Keys.Divide:
@@ -341,11 +326,46 @@ namespace IVS_GUI
                     buttonmul_Click(sender, EventArgs.Empty);
                     break;
                 case Keys.Oemplus:
-                    if (e.Shift)
+                    if (e.Shift) 
                         buttonend_Click(sender, EventArgs.Empty);
+                    break;
+                case Keys.Back:
+                    buttonDelete_Click(sender, EventArgs.Empty);
                     break;
             }
         }
-        
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            eval.Reset();
+            current = "";
+            textBoxCurrent.Text = current;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            current = current.Remove(current.Length - 1);
+            integer = integer.Remove(integer.Length - 1);
+            textBoxCurrent.Text = current;
+        }
+
+        private void buttonexp_Click(object sender, EventArgs e)
+        {
+            current += "^";
+            textBoxCurrent.Text = current;
+            eval.Append(integer);
+            eval.Append(Operator.Pow);
+            integer = "";
+        }
+
+        private void buttonsqr_Click(object sender, EventArgs e)
+        {
+            
+            current += "√";
+            textBoxCurrent.Text = current;
+            eval.Append(integer);
+            eval.Append(Operator.Root);
+            integer = "";
+        }
     }
 }
