@@ -23,7 +23,7 @@ namespace IVS_GUI
         private string result;
         private string history;
         private MathProb subProb;
-        
+
         /**
          * MathProb
          * Numbers is a list containing numbers given by user. First number is 0 
@@ -37,17 +37,17 @@ namespace IVS_GUI
         {
             private List<int> numbers = new List<int>();
             private List<char> operations = new List<char>();
-            private List<MathProb> undeProbs =  new List<MathProb>();
+            private List<MathProb> undeProbs = new List<MathProb>();
             private int Index = 0;
             public string SpecOps = null;
-            
+
 
             public MathProb()
             {
                 numbers.Add(0);
             }
 
-            public void intAppend (char op, string number)
+            public void intAppend(char op, string number)
             {
                 this.numbers.Add(int.Parse(number));
                 this.operations.Add(op);
@@ -73,17 +73,16 @@ namespace IVS_GUI
             {
                 return undeProbs;
             }
-            
         }
 
         private MathProb prob = new MathProb();
-        
+
         public GuiKalk() : base()
         {
             InitializeComponent();
             this.KeyPreview = true;
         }
-        
+
         /*
          * EventHandler methods for Clicking on buttons
          * Adds string of number to "current" and "integer"
@@ -93,113 +92,102 @@ namespace IVS_GUI
         {
             current += "1";
             integer += "1";
-            textBoxCurrent.Text = current;
-
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         void button2_Click(object sender, EventArgs e)
         {
             current += "2";
             integer += "2";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             current += "3";
             integer += "3";
-            textBoxCurrent.Text = current;
-
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             current += "4";
             integer += "4";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             current += "5";
             integer += "5";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             current += "6";
             integer += "6";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             current += "7";
             integer += "7";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             current += "8";
             integer += "8";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             current += "9";
             integer += "9";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
             current += "0";
             integer += "0";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
         
-        private void buttonlb_Click(object sender, EventArgs e)
-        {
-            if (subProb == null)
-            {
-                current += "(";
-                textBoxCurrent.Text = current;
-                subProb = new MathProb();
-            }
-        }
-
-        private void buttonrb_Click_1(object sender, EventArgs e)
-        {
-            if(subProb != null){
-                current += ")";
-                textBoxCurrent.Text = current;
-                subProb.intAppend(' ', integer);
-                prob.probAppend(subProb);
-                subProb = null;
-            }
-        }
 
         private void buttonadd_Click(object sender, EventArgs e)
         {
-            
             current += "+";
-            textBoxCurrent.Text = current;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Sum);
-            
-            integer = "";
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
 
+            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(Operator.Sum);
+
+            integer = "";
         }
 
         private void buttonsub_Click(object sender, EventArgs e)
         {
             current += "-";
-            textBoxCurrent.Text = current;
-            eval.Append(integer);
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+            
+            textBoxCurrent.Text = eval.Append(integer);
             eval.Append(Operator.Sub);
             integer = "";
         }
@@ -207,8 +195,10 @@ namespace IVS_GUI
         private void buttonmul_Click(object sender, EventArgs e)
         {
             current += "*";
-            textBoxCurrent.Text = current;
-            eval.Append(integer);
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+            
+            textBoxCurrent.Text = eval.Append(integer);
             eval.Append(Operator.Mul);
             integer = "";
         }
@@ -216,18 +206,34 @@ namespace IVS_GUI
         private void buttondiv_Click(object sender, EventArgs e)
         {
             current += "/";
-            textBoxCurrent.Text = current;
-            eval.Append(integer);
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+            
+            textBoxCurrent.Text = eval.Append(integer);
             eval.Append(Operator.Div);
             integer = "";
-            
         }
         
-        private void buttonSin_Click(object sender, EventArgs e)
+        private void buttonexp_Click(object sender, EventArgs e)
         {
-            current += "sin";
-            buttonlb_Click(sender, EventArgs.Empty);
-            subProb.SpecOps = "Sin";
+            current += "^";
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+            
+            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(Operator.Pow);
+            integer = "";
+        }
+
+        private void buttonsqr_Click(object sender, EventArgs e)
+        {
+            current += "√";
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+            
+            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(Operator.Root);
+            integer = "";
         }
 
         private void buttondot_Click(object sender, EventArgs e)
@@ -239,22 +245,25 @@ namespace IVS_GUI
 
         private void buttonend_Click(object sender, EventArgs e)
         {
-            history = Environment.NewLine + current;
+            integer = eval.Append(integer);
+            textBoxCurrent.Text = integer;
+            
+            history = Environment.NewLine + current + " = " + integer;
             textBoxHistory.AppendText(history);
-            current = eval.Append(integer);
-            textBoxCurrent.Text = current;
+            
             textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
-            integer = current;
-
-            //TODO poslat do process layeru
+            textBoxFormula.Text = "";
+            current = "";
+            integer = "";
+            
         }
-        
+
         private void GuiKalk_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.NumPad0:
-                    button0_Click(sender, EventArgs.Empty); 
+                    button0_Click(sender, EventArgs.Empty);
                     break;
                 case Keys.NumPad1:
                     button1_Click(sender, EventArgs.Empty);
@@ -326,7 +335,7 @@ namespace IVS_GUI
                     buttonmul_Click(sender, EventArgs.Empty);
                     break;
                 case Keys.Oemplus:
-                    if (e.Shift) 
+                    if (e.Shift)
                         buttonend_Click(sender, EventArgs.Empty);
                     break;
                 case Keys.Back:
@@ -340,33 +349,22 @@ namespace IVS_GUI
             eval.Reset();
             current = "";
             integer = "";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
+
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            if(integer.Length == 0)
+                return;
+            
             current = current.Remove(current.Length - 1);
             integer = integer.Remove(integer.Length - 1);
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
-        private void buttonexp_Click(object sender, EventArgs e)
-        {
-            current += "^";
-            textBoxCurrent.Text = current;
-            eval.Append(integer);
-            eval.Append(Operator.Pow);
-            integer = "";
-        }
 
-        private void buttonsqr_Click(object sender, EventArgs e)
-        {
-            
-            current += "√";
-            textBoxCurrent.Text = current;
-            eval.Append(integer);
-            eval.Append(Operator.Root);
-            integer = "";
-        }
     }
 }
