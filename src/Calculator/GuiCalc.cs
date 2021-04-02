@@ -339,6 +339,7 @@ namespace IVS_GUI
         {
             eval.Reset();
             current = "";
+            integer = "";
             textBoxCurrent.Text = current;
         }
 
