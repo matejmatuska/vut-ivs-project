@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using MyMathLib;
 
 namespace Calc
@@ -9,9 +9,17 @@ namespace Calc
      */
     enum Operator
     {
-        None, Sum, Sub, Mul, Div, Fact, Pow, Root, Disc
+        None,
+        Sum,
+        Sub,
+        Mul,
+        Div,
+        Fact,
+        Pow,
+        Root,
+        Disc
     }
-    
+
     /**
      * Basic math evaluator
      *
@@ -22,10 +30,13 @@ namespace Calc
      */
     class Evaluator
     {
+        private List<double> numbers = new List<double>();
+        private List<Operator> operators = new List<Operator>();
 
-        private bool inProgress = false;
-        private double result = 0; // stores intermediate results
-        private Operator currOp = Operator.None;
+        public Evaluator()
+        {
+         
+        }
 
         /**
          * Append number num to the current calculation
@@ -35,58 +46,14 @@ namespace Calc
          * @throw Exception when two numbers were entered consecutively without an operator between them
          * @return returns intermediate result as string
          */
-        public string Append(string num)
+        public void Append(string num)
         {
-            double number;
-
-            if (!double.TryParse(num, out number))
+            if (!double.TryParse(num, out var number))
             {
                 throw new Exception("Invalid number!"); //TODO handle invalid number
             }
 
-            if (!inProgress)
-            {
-                result = number;
-                return num;
-            }
-
-            switch (currOp)
-            {
-                case Operator.Mul:
-                    result = MathLib.Mul(result, number);
-                    break;
-                case Operator.Sum:
-                    result = MathLib.Sum(result, number);
-                    break;
-                case Operator.Sub:
-                    result = MathLib.Sub(result, number);
-                    break;
-                case Operator.Div:
-                    result = MathLib.Div(result, number);
-                    break;
-                case Operator.Fact:
-                    result = MathLib.Fact(result);
-                    break;
-                case Operator.Pow:
-                    result = MathLib.Pow(result, number);
-                    break;
-                case Operator.Root:
-                    result = MathLib.Root(result, number);
-                    break;
-                case Operator.Disc:
-                    // TODO
-                    //result = mathLib.Disc(result, number);
-                    break;
-                case Operator.None:
-                    throw new Exception("Two numbers without operator entered!"); // TODO handle two numbers without operator entered
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            
-            inProgress = false;
-            currOp = Operator.None;
-            return result.ToString();
+            numbers.Add(number);
         }
 
         /**
@@ -98,28 +65,79 @@ namespace Calc
          */
         public void Append(Operator op)
         {
-            if (currOp != Operator.None)
-            {
-                // reset the state
-                result = 0;
-                inProgress = false;
-                currOp = Operator.None;
-                throw new ArithmeticException("Multiple operators!"); // TODO handle multiple operators
-            }
-            currOp = op;
-            inProgress = true;
+            operators.Add(op);
         }
- 
+        
+        private double Eval()
+        {
+            var precedence = new List<Operator>()
+            {
+                Operator.Fact, Operator.Pow, Operator.Root, Operator.Mul, Operator.Div, Operator.Sum, Operator.Sub
+            };
+
+            foreach (var pop in precedence)
+            {
+                for (var i = 1; i <= operators.Count; i++)
+                {
+                    var op = operators[i - 1];
+
+                    if (op != pop)
+                        continue; // only eval the precedent operator
+
+                    var a = numbers[i - 1];
+                    var b = numbers[i];
+
+                    var res = GetResult(op, a, b);
+
+                    numbers.Remove(a);
+                    numbers.Remove(b);
+                    numbers.Insert(i - 1, res);
+                    
+                    operators.Remove(op);
+                    i--;
+                }
+            }
+            return numbers[0];
+        }
+
+        private static double GetResult(Operator op, double a, double b)
+        {
+            switch (op)
+            {
+                case Operator.Mul:
+                    return MathLib.Mul(a, b);
+                case Operator.Sum:
+                    return MathLib.Sum(a, b);
+                case Operator.Sub:
+                    return MathLib.Sub(a, b);
+                case Operator.Div:
+                    return MathLib.Div(a, b);
+                case Operator.Fact:
+                    return MathLib.Fact(a);
+                case Operator.Pow:
+                    return MathLib.Pow(a, b);
+                case Operator.Root:
+                    return MathLib.Root(a, b);
+                case Operator.Disc:
+                    // TODO
+                    //result = mathLib.Disc(result, number);
+                    throw new NotImplementedException();
+                    break;
+                case Operator.None:
+                    throw new Exception(
+                        "Two numbers without operator entered!"); // TODO handle two numbers without operator entered
+                default:
+                    throw new ArgumentOutOfRangeException();
+            } 
+        }
+
         /**
          * Resets the evaluator to its initial state
          */
         public void Reset()
         {
-            inProgress = false;
-            result = 0;
-            currOp = Operator.None;
+            operators.Clear();
+            numbers.Clear();
         }
-        
     }
-    
 }
