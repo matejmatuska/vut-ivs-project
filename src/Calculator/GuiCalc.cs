@@ -175,7 +175,7 @@ namespace IVS_GUI
             textBoxFormula.Text = current;
             textBoxCurrent.Text = integer;
 
-            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(integer);
             eval.Append(Operator.Sum);
 
             integer = "";
@@ -187,7 +187,7 @@ namespace IVS_GUI
             textBoxFormula.Text = current;
             textBoxCurrent.Text = integer;
             
-            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(integer);
             eval.Append(Operator.Sub);
             integer = "";
         }
@@ -198,7 +198,7 @@ namespace IVS_GUI
             textBoxFormula.Text = current;
             textBoxCurrent.Text = integer;
             
-            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(integer);
             eval.Append(Operator.Mul);
             integer = "";
         }
@@ -209,7 +209,7 @@ namespace IVS_GUI
             textBoxFormula.Text = current;
             textBoxCurrent.Text = integer;
             
-            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(integer);
             eval.Append(Operator.Div);
             integer = "";
         }
@@ -220,7 +220,7 @@ namespace IVS_GUI
             textBoxFormula.Text = current;
             textBoxCurrent.Text = integer;
             
-            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(integer);
             eval.Append(Operator.Pow);
             integer = "";
         }
@@ -231,7 +231,7 @@ namespace IVS_GUI
             textBoxFormula.Text = current;
             textBoxCurrent.Text = integer;
             
-            textBoxCurrent.Text = eval.Append(integer);
+            eval.Append(integer);
             eval.Append(Operator.Root);
             integer = "";
         }
@@ -245,7 +245,8 @@ namespace IVS_GUI
 
         private void buttonend_Click(object sender, EventArgs e)
         {
-            integer = eval.Append(integer);
+            eval.Append(integer);
+            integer = eval.Eval().ToString(CultureInfo.InvariantCulture);
             textBoxCurrent.Text = integer;
             
             history = Environment.NewLine + current + " = " + integer;
@@ -255,6 +256,7 @@ namespace IVS_GUI
             textBoxFormula.Text = "";
             current = "";
             integer = "";
+            eval.Reset();
             
         }
 
