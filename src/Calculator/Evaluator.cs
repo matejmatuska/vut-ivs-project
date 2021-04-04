@@ -68,7 +68,7 @@ namespace Calc
             operators.Add(op);
         }
         
-        private double Eval()
+        public double Eval()
         {
             var precedence = new List<Operator>()
             {
