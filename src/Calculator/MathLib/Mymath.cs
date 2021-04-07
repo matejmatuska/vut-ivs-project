@@ -152,16 +152,11 @@ namespace MyMathLib
             return (double)Math.Pow(x, 1.0 / n);
         }
 
-        /*
-         * calculates the discriminant of the equation with a, b, c coefficients
-         *
-         *@param    a,b,c   coefficients      
-         *@return   discriminant
-         */
-        public static double Disc(double a, double b, double c)
+     
+
+        public static double Mod(double x1, double x2)
         {
-            //calculation of the discriminant
-            return (b * b) - (4 * a * c);
+            throw new NotImplementedException();
         }
     }
 }

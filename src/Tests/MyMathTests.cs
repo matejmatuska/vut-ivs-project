@@ -273,28 +273,36 @@ namespace MSTest_Test_Project
         }
      
         [TestMethod]
-        // test discriminant function
-        public void DiscTest()
+        // test modulo function
+        public void ModTest()
         {
-          
+            try
+            {
+                MathLib.Mod(42, 0);
+            }
+            catch (DivideByZeroException)
+            {
+
+            }
+
             //are equal
-            Assert.AreEqual(76, MathLib.Disc(3, 4, -5));
-            Assert.AreEqual(638.44, MathLib.Disc(0.8, 25, -4.2), Accuracy);
-            Assert.AreEqual(0, MathLib.Disc(0, 0, 0));
-            Assert.AreEqual(0, MathLib.Disc(2, 4, 2));
-            Assert.AreEqual(-3, MathLib.Disc(1, 1, 1));
-            Assert.AreEqual(15999952000000, MathLib.Disc(12000000, 4000000, 1));
-            Assert.AreEqual(-4.534824, MathLib.Disc(0.1254, 0.324, 9.25), Accuracy);
-            Assert.AreEqual(1472, MathLib.Disc(-14, -32, 8), Accuracy);
+            Assert.AreEqual(0, MathLib.Mod(0, 15));
+            Assert.AreEqual(2, MathLib.Mod(10, 4));
+            Assert.AreEqual(-10, MathLib.Mod(-36, -13));
+            Assert.AreEqual(-4, MathLib.Mod(-2000000, 127));
+            Assert.AreEqual(1, MathLib.Mod(11, 2.5));
+            Assert.AreEqual(50.2, MathLib.Mod(402.3, 50.3), Accuracy);
+            Assert.AreEqual(-0.04, MathLib.Mod(-12, 0.13), Accuracy);
+            Assert.AreEqual(18, MathLib.Mod(8874, 123));
             //are not equal
-            Assert.AreNotEqual(-812.5, MathLib.Disc(5, 2, 5),Accuracy);
-            Assert.AreNotEqual(-20, MathLib.Disc(352, 2, 5.8), Accuracy);
-            Assert.AreNotEqual(1, MathLib.Disc(1, 1, 1));
-            Assert.AreNotEqual(8, MathLib.Disc(-8, 0, -80));
-            Assert.AreNotEqual(-3.5, MathLib.Disc(25, 18, 1), Accuracy);
-            Assert.AreNotEqual(638.4, MathLib.Disc(0.8, 25, -4.2), Accuracy);
-            Assert.AreNotEqual(-1511376, MathLib.Disc(-90000, 25, -4.2));
-            Assert.AreNotEqual(0, MathLib.Disc(1, 1, 0));
+            Assert.AreNotEqual(15, MathLib.Mod(0, 15));
+            Assert.AreNotEqual(2.01, MathLib.Mod(10, 4));
+            Assert.AreNotEqual(10, MathLib.Mod(-36, -13));
+            Assert.AreNotEqual(1, MathLib.Mod(-9, 4));
+            Assert.AreNotEqual(4.5, MathLib.Mod(35.6, 5.2), Accuracy);
+            Assert.AreNotEqual(123, MathLib.Mod(-2000000, 127));
+            Assert.AreNotEqual(12, MathLib.Mod(12, 12));
+            Assert.AreNotEqual(0.01, MathLib.Mod(10.2, 0.5), Accuracy);
         }
     }
 }
