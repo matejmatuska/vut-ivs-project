@@ -152,11 +152,27 @@ namespace MyMathLib
             return (double)Math.Pow(x, 1.0 / n);
         }
 
-     
 
+        /*
+        * calculates the modulo of two numbers 
+        *
+        *@param    x1   dividend
+        *@param    x2   divisor       
+        *@return   the ramainder of x1 / x2
+        *          exception when the x2 is equal to 0
+        */
         public static double Mod(double x1, double x2)
         {
-            throw new NotImplementedException();
+            //dividing by zero check
+            if (x2 == 0)
+            {
+                throw new DivideByZeroException();
+            }
+
+            //calculates the remainder
+            double mod = x1 - Math.Truncate(x1 / x2)*x2;
+
+            return mod;
         }
     }
 }
