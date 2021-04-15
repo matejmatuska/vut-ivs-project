@@ -235,6 +235,29 @@ namespace IVS_GUI
             eval.Append(Operator.Root);
             integer = "";
         }
+        
+        private void button_sqr2_Click(object sender, EventArgs e)
+        {
+            button2_Click(sender, EventArgs.Empty);
+            buttonsqr_Click(sender, EventArgs.Empty);
+        }
+
+        private void buttonexp2_Click(object sender, EventArgs e)
+        {
+            buttonexp_Click(sender, EventArgs.Empty);
+            button2_Click(sender, EventArgs.Empty);
+        }
+
+        private void buttonmod_Click(object sender, EventArgs e)
+        {
+            current += "%";
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+            
+            eval.Append(integer);
+    //TODO  eval.Append(Operator.Mod);
+            integer = "";
+        }
 
         private void buttondot_Click(object sender, EventArgs e)
         {
@@ -366,6 +389,7 @@ namespace IVS_GUI
             textBoxCurrent.Text = integer;
             textBoxFormula.Text = current;
         }
+
 
 
     }
