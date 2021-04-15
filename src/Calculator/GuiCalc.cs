@@ -258,6 +258,17 @@ namespace IVS_GUI
     //TODO  eval.Append(Operator.Mod);
             integer = "";
         }
+        
+        private void buttonFact_Click(object sender, EventArgs e)
+        {
+            current += "!";
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+            
+            eval.Append(integer);
+            eval.Append(Operator.Fact);
+            integer = "";
+        }
 
         private void buttondot_Click(object sender, EventArgs e)
         {
