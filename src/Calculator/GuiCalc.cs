@@ -215,19 +215,21 @@ namespace IVS_GUI
 
         private void buttonend_Click(object sender, EventArgs e)
         {
+            if (textBoxFormula.Text == "") 
+                return;
+            
             eval.Append(integer);
             integer = eval.Eval().ToString(CultureInfo.InvariantCulture);
             textBoxCurrent.Text = integer;
-            
+                
             history = Environment.NewLine + current + " = " + integer;
             textBoxHistory.AppendText(history);
-            
+                
             textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
             textBoxFormula.Text = "";
             current = "";
             integer = "";
             eval.Reset();
-            
         }
 
         private void GuiKalk_KeyDown(object sender, KeyEventArgs e)
