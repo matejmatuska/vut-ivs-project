@@ -255,7 +255,7 @@ namespace IVS_GUI
             textBoxCurrent.Text = integer;
             
             eval.Append(integer);
-    //TODO  eval.Append(Operator.Mod);
+            eval.Append(Operator.Mod);
             integer = "";
         }
         

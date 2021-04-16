@@ -17,7 +17,7 @@ namespace Calc
         Fact,
         Pow,
         Root,
-        Disc
+        Mod
     }
 
     /**
@@ -33,10 +33,7 @@ namespace Calc
         private List<double> numbers = new List<double>();
         private List<Operator> operators = new List<Operator>();
 
-        public Evaluator()
-        {
-         
-        }
+        private bool awaitNumber = true;
 
         /**
          * Append number num to the current calculation
@@ -50,7 +47,10 @@ namespace Calc
         {
             if (!double.TryParse(num, out var number))
             {
-                throw new Exception("Invalid number!"); //TODO handle invalid number
+                if (awaitNumber)
+                {
+                    throw new Exception("Invalid number!"); //TODO handle invalid number
+                }
             }
 
             numbers.Add(number);
@@ -66,13 +66,21 @@ namespace Calc
         public void Append(Operator op)
         {
             operators.Add(op);
+            awaitNumber = op != Operator.Fact;
         }
         
         public double Eval()
         {
-            var precedence = new List<Operator>()
+            var precedence = new List<Operator>
             {
-                Operator.Fact, Operator.Pow, Operator.Root, Operator.Mul, Operator.Div, Operator.Sum, Operator.Sub
+                Operator.Fact, 
+                Operator.Pow, 
+                Operator.Root, 
+                Operator.Mul, 
+                Operator.Div, 
+                Operator.Mod, 
+                Operator.Sum, 
+                Operator.Sub
             };
 
             foreach (var pop in precedence)
@@ -85,7 +93,9 @@ namespace Calc
                         continue; // only eval the precedent operator
 
                     var a = numbers[i - 1];
-                    var b = numbers[i];
+                    double b;
+
+                    b = numbers[i];
 
                     var res = GetResult(op, a, b);
 
@@ -118,11 +128,8 @@ namespace Calc
                     return MathLib.Pow(a, b);
                 case Operator.Root:
                     return MathLib.Root(a, b);
-                case Operator.Disc:
-                    // TODO
-                    //result = mathLib.Disc(result, number);
-                    throw new NotImplementedException();
-                    break;
+                case Operator.Mod:
+                    return MathLib.Mod(a, b);
                 case Operator.None:
                     throw new Exception(
                         "Two numbers without operator entered!"); // TODO handle two numbers without operator entered
@@ -136,6 +143,7 @@ namespace Calc
          */
         public void Reset()
         {
+            awaitNumber = true;
             operators.Clear();
             numbers.Clear();
         }
