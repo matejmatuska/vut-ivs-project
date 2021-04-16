@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Calc;
 
@@ -16,66 +8,10 @@ namespace IVS_GUI
     public partial class GuiKalk : Form
     {
         private Evaluator eval = new Evaluator();
-        private int[] Number;
 
         private string integer;
         private string current;
-        private string result;
         private string history;
-        private MathProb subProb;
-
-        /**
-         * MathProb
-         * Numbers is a list containing numbers given by user. First number is 0 
-         * Operations is a list containing ops given by user. Every operation is for number with index i+1 in numbers
-         * UndeProbs is a List of MathProbs. It contains another problems contained in main problem.
-         * (Brackets or operations that require own solution)
-         * <methodsname="MathProb"> intAppend(char op, string number) Increase list of numbers and operands
-         *          probAppend(MathProb prob) Adds underProblem to main problem
-         */
-        public class MathProb
-        {
-            private List<int> numbers = new List<int>();
-            private List<char> operations = new List<char>();
-            private List<MathProb> undeProbs = new List<MathProb>();
-            private int Index = 0;
-            public string SpecOps = null;
-
-
-            public MathProb()
-            {
-                numbers.Add(0);
-            }
-
-            public void intAppend(char op, string number)
-            {
-                this.numbers.Add(int.Parse(number));
-                this.operations.Add(op);
-            }
-
-            public void probAppend(MathProb prob)
-            {
-                prob.Index = numbers.Count;
-                undeProbs.Add(prob);
-            }
-
-            public List<int> getNumbers()
-            {
-                return numbers;
-            }
-
-            public List<char> getOps()
-            {
-                return operations;
-            }
-
-            public List<MathProb> getUnderProb()
-            {
-                return undeProbs;
-            }
-        }
-
-        private MathProb prob = new MathProb();
 
         public GuiKalk() : base()
         {
