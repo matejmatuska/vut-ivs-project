@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Security.AccessControl;
 
-namespace IVS_GUI
+namespace Calc
 {
     partial class GuiKalk
     {

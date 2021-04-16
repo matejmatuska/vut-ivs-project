@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
-using Calc;
 
-namespace IVS_GUI
+namespace Calc
 {
     public partial class GuiKalk : Form
     {
-        private Evaluator eval = new Evaluator();
+        private readonly Evaluator eval = new Evaluator();
 
         private string integer;
         private string current;
         private string history;
 
-        public GuiKalk() : base()
+        public GuiKalk()
         {
             InitializeComponent();
             this.KeyPreview = true;
+        }
+
+        private void onNumber_Click(int number)
+        {
+            current += number.ToString();
+            integer += number.ToString();
+            textBoxCurrent.Text = integer;
+            textBoxFormula.Text = current;
         }
 
         /*
@@ -26,84 +33,53 @@ namespace IVS_GUI
          */
         private void button1_Click(object sender, EventArgs e)
         {
-            current += "1";
-            integer += "1";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+           onNumber_Click(1);
         }
 
-        void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            current += "2";
-            integer += "2";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(2);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            current += "3";
-            integer += "3";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(3);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            current += "4";
-            integer += "4";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(4);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            current += "5";
-            integer += "5";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(5);
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {
-            current += "6";
-            integer += "6";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+        {   
+            onNumber_Click(6);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            current += "7";
-            integer += "7";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(7);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            current += "8";
-            integer += "8";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(8);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            current += "9";
-            integer += "9";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(9);
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
-            current += "0";
-            integer += "0";
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
+            onNumber_Click(0);
         }
-        
 
         private void buttonadd_Click(object sender, EventArgs e)
         {
@@ -216,7 +192,7 @@ namespace IVS_GUI
         private void buttonend_Click(object sender, EventArgs e)
         {
             if (textBoxFormula.Text == "") 
-                return;
+                return; // no-op when nothing is entered
             
             eval.Append(integer);
             integer = eval.Eval().ToString(CultureInfo.InvariantCulture);
