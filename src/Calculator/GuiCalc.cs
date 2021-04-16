@@ -272,8 +272,8 @@ namespace IVS_GUI
 
         private void buttondot_Click(object sender, EventArgs e)
         {
-            current += ",";
-            integer += ",";
+            current += ".";
+            integer += ".";
             textBoxCurrent.Text = current;
         }
 
