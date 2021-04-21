@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest Test Project", "Tests\MSTest Test Project.csproj", "{5DE27E8D-D574-4A8E-A5B6-4FB514E06DEB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB770B3F-827C-41EB-91CF-E51D9E7A412C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stdev", "Stdev\Stdev.csproj", "{44876324-44E6-45B6-B1F7-453119B4D792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,10 @@ Global
 		{5DE27E8D-D574-4A8E-A5B6-4FB514E06DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DE27E8D-D574-4A8E-A5B6-4FB514E06DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DE27E8D-D574-4A8E-A5B6-4FB514E06DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44876324-44E6-45B6-B1F7-453119B4D792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44876324-44E6-45B6-B1F7-453119B4D792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44876324-44E6-45B6-B1F7-453119B4D792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44876324-44E6-45B6-B1F7-453119B4D792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
