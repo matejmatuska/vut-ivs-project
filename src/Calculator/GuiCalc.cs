@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Forms;
 
+
 namespace Calc
 {
     public partial class GuiKalk : Form
@@ -11,31 +12,84 @@ namespace Calc
         private string integer;
         private string current;
         private string history;
+        private bool inFromlast;
 
         public GuiKalk()
         {
             InitializeComponent();
             this.KeyPreview = true;
         }
-
+        
+        /**
+         * Method to change GUI textboxes and to send numbers to @see Evaluator.cs
+         * @brief Takes given number and stores it in integer and current
+         * @param number number which should be added
+         */
         private void onNumber_Click(int number)
         {
+            try
+            {
+                if (inFromlast)
+            {
+                current = "";
+                integer = "";
+            }
+            
             current += number.ToString();
             integer += number.ToString();
             textBoxCurrent.Text = integer;
             textBoxFormula.Text = current;
+            inFromlast = false;
+            }
+            catch (Exception e)
+            {
+                showError("Chyba", "Bude doděláno");
+                throw;
+            }
         }
 
-        /*
+        private void onOp_Click(char c, Operator op)
+        {
+            
+            current += c;
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
+
+            eval.Append(integer);
+            eval.Append(op);
+
+            integer = "";
+            inFromlast = false;
+        }
+
+        public void showError(string message, string title)
+        {
+            MessageBox.Show(message, title,
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /**
+         * \defgroup EventHandlers
          * EventHandler methods for Clicking on buttons
          * Adds string of number to "current" and "integer"
          * Updates Current text in GUI
+         * @param Sender who initiated action (not used)
+         * @param Event which event was initiated (not used)
+         */
+        
+        /**
+         * @ingroup EventHandlers
+         * @brief adds number 1 to current value
          */
         private void button1_Click(object sender, EventArgs e)
         {
            onNumber_Click(1);
         }
-
+        
+        /**
+         * @ingroup EventHandlers
+         * @brief adds number 2 to current value
+         */
         private void button2_Click(object sender, EventArgs e)
         {
             onNumber_Click(2);
@@ -83,69 +137,42 @@ namespace Calc
 
         private void buttonadd_Click(object sender, EventArgs e)
         {
-            current += "+";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-
-            eval.Append(integer);
-            eval.Append(Operator.Sum);
-
-            integer = "";
+            onOp_Click('+', Operator.Sum);
         }
 
         private void buttonsub_Click(object sender, EventArgs e)
         {
-            current += "-";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Sub);
-            integer = "";
+            onOp_Click('-', Operator.Sub);
         }
 
         private void buttonmul_Click(object sender, EventArgs e)
         {
-            current += "*";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Mul);
-            integer = "";
+            onOp_Click('*', Operator.Mul);
         }
 
         private void buttondiv_Click(object sender, EventArgs e)
         {
-            current += "/";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Div);
-            integer = "";
+            onOp_Click('/', Operator.Mul);
         }
         
         private void buttonexp_Click(object sender, EventArgs e)
         {
-            current += "^";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Pow);
-            integer = "";
+            onOp_Click('^', Operator.Pow);
         }
 
         private void buttonsqr_Click(object sender, EventArgs e)
         {
-            current += "√";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Root);
-            integer = "";
+            onOp_Click('√', Operator.Root);
+        }
+        
+        private void buttonmod_Click(object sender, EventArgs e)
+        {
+            onOp_Click('%', Operator.Mod);
+        }
+        
+        private void buttonFact_Click(object sender, EventArgs e)
+        {
+            onOp_Click('!', Operator.Fact);
         }
         
         private void button_sqr2_Click(object sender, EventArgs e)
@@ -158,28 +185,6 @@ namespace Calc
         {
             buttonexp_Click(sender, EventArgs.Empty);
             button2_Click(sender, EventArgs.Empty);
-        }
-
-        private void buttonmod_Click(object sender, EventArgs e)
-        {
-            current += "%";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Mod);
-            integer = "";
-        }
-        
-        private void buttonFact_Click(object sender, EventArgs e)
-        {
-            current += "!";
-            textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
-            
-            eval.Append(integer);
-            eval.Append(Operator.Fact);
-            integer = "";
         }
 
         private void buttondot_Click(object sender, EventArgs e)
@@ -203,8 +208,9 @@ namespace Calc
                 
             textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
             textBoxFormula.Text = "";
-            current = "";
-            integer = "";
+            current = integer;
+            inFromlast = true;
+
             eval.Reset();
         }
 

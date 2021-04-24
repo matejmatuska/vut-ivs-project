@@ -61,10 +61,10 @@ namespace Calc
             this.button_sqr2 = new System.Windows.Forms.Button();
             this.buttonexp = new System.Windows.Forms.Button();
             this.buttonexp2 = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonlb = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.buttonFact = new System.Windows.Forms.Button();
+            this.buttonlb = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -471,20 +471,6 @@ namespace Calc
             this.buttonexp2.UseVisualStyleBackColor = false;
             this.buttonexp2.Click += new System.EventHandler(this.buttonexp2_Click);
             // 
-            // buttonReset
-            // 
-            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReset.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
-            this.buttonReset.Location = new System.Drawing.Point(420, 276);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(134, 42);
-            this.buttonReset.TabIndex = 21;
-            this.buttonReset.Text = "CE";
-            this.buttonReset.UseVisualStyleBackColor = false;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
-            // 
             // buttonDelete
             // 
             this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
@@ -500,12 +486,19 @@ namespace Calc
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // buttonlb
+            // buttonReset
             // 
-            this.buttonlb.Location = new System.Drawing.Point(0, 0);
-            this.buttonlb.Name = "buttonlb";
-            this.buttonlb.Size = new System.Drawing.Size(75, 23);
-            this.buttonlb.TabIndex = 0;
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReset.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.buttonReset.Location = new System.Drawing.Point(420, 276);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(134, 42);
+            this.buttonReset.TabIndex = 21;
+            this.buttonReset.Text = "CE";
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonFact
             // 
@@ -521,6 +514,13 @@ namespace Calc
             this.buttonFact.UseVisualStyleBackColor = false;
             this.buttonFact.Click += new System.EventHandler(this.buttonFact_Click);
             // 
+            // buttonlb
+            // 
+            this.buttonlb.Location = new System.Drawing.Point(0, 0);
+            this.buttonlb.Name = "buttonlb";
+            this.buttonlb.Size = new System.Drawing.Size(75, 23);
+            this.buttonlb.TabIndex = 0;
+            // 
             // GuiKalk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,6 +534,7 @@ namespace Calc
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 600);
             this.Name = "GuiKalk";
+            this.TransparencyKey = System.Drawing.Color.Blue;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GuiKalk_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -563,7 +564,6 @@ namespace Calc
         private System.Windows.Forms.Button button0;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonReset;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
