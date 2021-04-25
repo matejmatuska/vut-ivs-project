@@ -68,8 +68,9 @@ namespace Calc
             {
                 current += symbol;
             }
+
             number = symbol.ToString();
-            
+
             textBoxFormula.Text = current;
             textBoxCurrent.Text = number;
         }
@@ -78,7 +79,7 @@ namespace Calc
         {
             if (IsNumberEmpty())
                 return;
-            
+
             current += c;
             textBoxFormula.Text = current;
             textBoxCurrent.Text = number;
@@ -214,6 +215,7 @@ namespace Calc
             {
                 onOp_Click('*', Operator.Mul);
             }
+
             button2_Click(sender, EventArgs.Empty);
             buttonsqr_Click(sender, EventArgs.Empty);
         }
@@ -229,12 +231,19 @@ namespace Calc
 
         private void buttondot_Click(object sender, EventArgs e)
         {
+            if (inFromlast)
+            {
+                current = "";
+                number = "";
+            }
+
             if (number.Contains("."))
                 return;
-            
+
             current += ".";
             number += ".";
             textBoxCurrent.Text = current;
+            inFromlast = false;
         }
 
         private void buttonend_Click(object sender, EventArgs e)
