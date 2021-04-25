@@ -9,15 +9,16 @@ namespace Calc
     {
         private readonly Evaluator eval = new Evaluator();
 
-        private string integer;
-        private string current;
-        private string history;
+        private string integer = "";
+        private string current = "";
+        private string history = "";
         private bool inFromlast;
+        private bool opEntered = false;
 
         public GuiKalk()
         {
             InitializeComponent();
-            this.KeyPreview = true;
+            KeyPreview = true;
         }
 
         /**
@@ -46,6 +47,32 @@ namespace Calc
                 showError("Chyba", "Bude doděláno");
                 throw;
             }
+        }
+
+        private bool ShouldChangeSign()
+        {
+            return integer.Length == 0 || integer == "+" || integer == "-";
+        }
+
+        private void onSign_Click(char symbol)
+        {
+            if (current == "")
+            {
+                current = symbol.ToString();
+            }
+            else if (integer == "+" || integer == "-")
+            {
+                current = current.Remove(current.Length - 1, 1);
+                current += symbol;
+            }
+            else
+            {
+                current += symbol;
+            }
+            integer = symbol.ToString();
+            
+            textBoxFormula.Text = current;
+            textBoxCurrent.Text = integer;
         }
 
         private void onOp_Click(char c, Operator op)
@@ -135,12 +162,18 @@ namespace Calc
 
         private void buttonadd_Click(object sender, EventArgs e)
         {
-            onOp_Click('+', Operator.Sum);
+            if (ShouldChangeSign())
+                onSign_Click('+');
+            else
+                onOp_Click('+', Operator.Sum);
         }
 
         private void buttonsub_Click(object sender, EventArgs e)
         {
-            onOp_Click('-', Operator.Sub);
+            if (ShouldChangeSign())
+                onSign_Click('-');
+            else
+                onOp_Click('-', Operator.Sub);
         }
 
         private void buttonmul_Click(object sender, EventArgs e)
@@ -305,6 +338,7 @@ namespace Calc
             integer = "";
             textBoxCurrent.Text = integer;
             textBoxFormula.Text = current;
+            inFromlast = false;
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
