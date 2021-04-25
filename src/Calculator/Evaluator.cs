@@ -127,7 +127,7 @@ namespace Calc
                 case Operator.Pow:
                     return MathLib.Pow(a, b);
                 case Operator.Root:
-                    return MathLib.Root(a, b);
+                    return MathLib.Root(b, a);
                 case Operator.Mod:
                     return MathLib.Mod(a, b);
                 case Operator.None:
