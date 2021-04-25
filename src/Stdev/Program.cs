@@ -12,36 +12,45 @@ namespace Stdev
     {
         static void Main()
         {
-            double arithmAvg = 0.0;
-            double deviation = 0.0;
-            double s = 0.0;
-            List<int> nums = new List<int>();
-            int n = 0;
-            string[] words = new string[1000];
+            double x = 0.0; // initialization of arithmetic mean
+            double dev = 0.0;
+            double stdev = 0.0;
+            double number;
+            List<double> nums = new List<double>();
+            int n = 0; // number of inputs
+            List<string> words = new List<string>();
             //loading input numbers from stdin to nums
             string line;
             while ((line = Console.In.ReadLine()) != null)
             {
-                words = line.Split(' ', '\n', '\t');
+                words = line.Split(' ', '\n', '\t').ToList();
                 foreach (var word in words)
                 {
-                    nums.Add(Int32.Parse(word));
+                    if (Double.TryParse(word, out number))
+                        nums.Add(number);
+                    else
+                        throw new InvalidDataException("Incorrect data (not a number!).");
+
                 }
             }
 
             n = nums.Count;
-            foreach (int item in nums) // Loop through List with foreach
+            if (n < 2)
             {
-                arithmAvg = MathLib.Sum(arithmAvg, item);
-                deviation = MathLib.Sum(deviation, MathLib.Pow(item, 2.0));
+                throw new ArgumentException("Number of inputs must be greater than 2");
+            }
+            foreach (double item in nums) // Loop through List with foreach
+            {
+                x = MathLib.Sum(x, item);
+                dev = MathLib.Sum(dev, MathLib.Pow(item, 2.0));
             }
 
-            arithmAvg = MathLib.Div(arithmAvg, n);
+            x = MathLib.Div(x, n); // calculation of arithmetic mean
 
             // counting of the standard deviation
-            s = MathLib.Root(MathLib.Div(MathLib.Sub(deviation, MathLib.Mul(n, MathLib.Pow(arithmAvg, 2))), MathLib.Sub(n, 1)), 2);
-            Console.WriteLine(s);
-            Console.ReadKey();
+            stdev = MathLib.Root(MathLib.Div(MathLib.Sub(dev, MathLib.Mul(n, MathLib.Pow(x, 2))), MathLib.Sub(n, 1)), 2);
+            Console.WriteLine(stdev);
+           // Console.ReadKey();
 
         }
     }

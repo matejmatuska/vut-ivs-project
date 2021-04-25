@@ -4,13 +4,18 @@ using MyMathLib;
 
 namespace MSTest_Test_Project
 {
+    /**
+    * Math Library tests.
+    */
     [TestClass]
     public class MyMathLibTests
     {
         private const double Accuracy = 1e-5;
 
+        /**
+        * Test for summary .
+        */
         [TestMethod]
-        // test summary
         public void SumTest()
         {
          
@@ -33,9 +38,11 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(0, MathLib.Sum(-0.1, 0.11), Accuracy);
             Assert.AreNotEqual(10, MathLib.Sum(30, 20));
         }
-       
+
+        /**
+        * Test for subtraction .
+        */
         [TestMethod]
-        //test subtraction
         public void SubTest()
         {
           
@@ -60,9 +67,10 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(1, MathLib.Sub(0, 0));
 
         }
-       
+        /**
+        * Test for multiplication.
+        */
         [TestMethod]
-        //test multiplication
         public void MulTest()
         {
           
@@ -85,9 +93,12 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(-154.2569, MathLib.Mul(-12458.236, 2546.269),Accuracy);
 
         }
-       
+
+        /**
+        * Test for division.
+        */
+
         [TestMethod]
-        //test division
         public void DivTest()
         {
 
@@ -129,10 +140,11 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(15.41677, MathLib.Div(185, 12), Accuracy);
             Assert.AreNotEqual(15000000, MathLib.Div(15000000000, 1));
         }
-       
 
+        /**
+        * Test for factorial.
+        */
         [TestMethod]
-        // test factorial
         public void FactTest()
         {
            
@@ -174,9 +186,10 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(55, MathLib.Fact(5));
 
         }
-      
+        /**
+        * Test for exponentiation.
+        */
         [TestMethod]
-        // test factorial
         public void PowTest()
         {
            
@@ -225,9 +238,10 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(-300, MathLib.Pow(-14.42, 3));
         }
 
-       
+        /**
+        * Test for root function.
+        */
         [TestMethod]
-        // test root function
         public void RootTest()
         {
            
@@ -271,9 +285,11 @@ namespace MSTest_Test_Project
             Assert.AreNotEqual(-1.2569, MathLib.Root(-6.254, 7), Accuracy);
 
         }
-     
+
+        /**
+        * Test for modulo.
+        */
         [TestMethod]
-        // test modulo function
         public void ModTest()
         {
             try
@@ -294,7 +310,7 @@ namespace MSTest_Test_Project
             Assert.AreEqual(50.2, MathLib.Mod(402.3, 50.3), Accuracy);
             Assert.AreEqual(-0.04, MathLib.Mod(-12, 0.13), Accuracy);
             Assert.AreEqual(18, MathLib.Mod(8874, 123));
-            //are not equal
+            //not equal
             Assert.AreNotEqual(15, MathLib.Mod(0, 15));
             Assert.AreNotEqual(2.01, MathLib.Mod(10, 4));
             Assert.AreNotEqual(10, MathLib.Mod(-36, -13));
