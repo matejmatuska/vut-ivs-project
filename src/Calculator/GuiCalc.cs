@@ -9,7 +9,7 @@ namespace Calc
     {
         private readonly Evaluator eval = new Evaluator();
 
-        private string integer = "";
+        private string number = "";
         private string current = "";
         private string history = "";
         private bool inFromlast;
@@ -32,12 +32,12 @@ namespace Calc
                 if (inFromlast)
                 {
                     current = "";
-                    integer = "";
+                    this.number = "";
                 }
 
                 current += number.ToString();
-                integer += number.ToString();
-                textBoxCurrent.Text = integer;
+                this.number += number.ToString();
+                textBoxCurrent.Text = this.number;
                 textBoxFormula.Text = current;
                 inFromlast = false;
             }
@@ -48,9 +48,9 @@ namespace Calc
             }
         }
 
-        private bool ShouldChangeSign()
+        private bool IsNumberEmpty()
         {
-            return integer.Length == 0 || integer == "+" || integer == "-";
+            return number.Length == 0 || number == "+" || number == "-";
         }
 
         private void onSign_Click(char symbol)
@@ -59,7 +59,7 @@ namespace Calc
             {
                 current = symbol.ToString();
             }
-            else if (integer == "+" || integer == "-")
+            else if (number == "+" || number == "-")
             {
                 current = current.Remove(current.Length - 1, 1);
                 current += symbol;
@@ -68,22 +68,22 @@ namespace Calc
             {
                 current += symbol;
             }
-            integer = symbol.ToString();
+            number = symbol.ToString();
             
             textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
+            textBoxCurrent.Text = number;
         }
 
         private void onOp_Click(char c, Operator op)
         {
             current += c;
             textBoxFormula.Text = current;
-            textBoxCurrent.Text = integer;
+            textBoxCurrent.Text = number;
 
-            eval.Append(integer);
+            eval.Append(number);
             eval.Append(op);
 
-            integer = "";
+            number = "";
             inFromlast = false;
         }
 
@@ -161,7 +161,7 @@ namespace Calc
 
         private void buttonadd_Click(object sender, EventArgs e)
         {
-            if (ShouldChangeSign())
+            if (IsNumberEmpty())
                 onSign_Click('+');
             else
                 onOp_Click('+', Operator.Sum);
@@ -169,7 +169,7 @@ namespace Calc
 
         private void buttonsub_Click(object sender, EventArgs e)
         {
-            if (ShouldChangeSign())
+            if (IsNumberEmpty())
                 onSign_Click('-');
             else
                 onOp_Click('-', Operator.Sub);
@@ -207,7 +207,7 @@ namespace Calc
 
         private void button_sqr2_Click(object sender, EventArgs e)
         {
-            if (integer != "")
+            if (number != "")
             {
                 onOp_Click('*', Operator.Mul);
             }
@@ -224,7 +224,7 @@ namespace Calc
         private void buttondot_Click(object sender, EventArgs e)
         {
             current += ".";
-            integer += ".";
+            number += ".";
             textBoxCurrent.Text = current;
         }
 
@@ -233,16 +233,16 @@ namespace Calc
             if (textBoxFormula.Text == "")
                 return; // no-op when nothing is entered
 
-            eval.Append(integer);
-            integer = eval.Eval().ToString(CultureInfo.InvariantCulture);
-            textBoxCurrent.Text = integer;
+            eval.Append(number);
+            number = eval.Eval().ToString(CultureInfo.InvariantCulture);
+            textBoxCurrent.Text = number;
 
-            history = Environment.NewLine + current + " = " + integer;
+            history = Environment.NewLine + current + " = " + number;
             textBoxHistory.AppendText(history);
 
             textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
             textBoxFormula.Text = "";
-            current = integer;
+            current = number;
             inFromlast = true;
 
             eval.Reset();
@@ -338,20 +338,20 @@ namespace Calc
         {
             eval.Reset();
             current = "";
-            integer = "";
-            textBoxCurrent.Text = integer;
+            number = "";
+            textBoxCurrent.Text = number;
             textBoxFormula.Text = current;
             inFromlast = false;
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (integer.Length == 0)
+            if (number.Length == 0)
                 return;
 
             current = current.Remove(current.Length - 1);
-            integer = integer.Remove(integer.Length - 1);
-            textBoxCurrent.Text = integer;
+            number = number.Remove(number.Length - 1);
+            textBoxCurrent.Text = number;
             textBoxFormula.Text = current;
         }
     }
