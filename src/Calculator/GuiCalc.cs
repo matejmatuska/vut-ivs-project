@@ -76,6 +76,9 @@ namespace Calc
 
         private void onOp_Click(char c, Operator op)
         {
+            if (IsNumberEmpty())
+                return;
+            
             current += c;
             textBoxFormula.Text = current;
             textBoxCurrent.Text = number;
@@ -207,7 +210,7 @@ namespace Calc
 
         private void button_sqr2_Click(object sender, EventArgs e)
         {
-            if (number != "")
+            if (!IsNumberEmpty())
             {
                 onOp_Click('*', Operator.Mul);
             }
@@ -217,8 +220,11 @@ namespace Calc
 
         private void buttonexp2_Click(object sender, EventArgs e)
         {
-            buttonexp_Click(sender, EventArgs.Empty);
-            button2_Click(sender, EventArgs.Empty);
+            if (!IsNumberEmpty())
+            {
+                buttonexp_Click(sender, EventArgs.Empty);
+                button2_Click(sender, EventArgs.Empty);
+            }
         }
 
         private void buttondot_Click(object sender, EventArgs e)
