@@ -229,6 +229,9 @@ namespace Calc
 
         private void buttondot_Click(object sender, EventArgs e)
         {
+            if (number.Contains("."))
+                return;
+            
             current += ".";
             number += ".";
             textBoxCurrent.Text = current;
