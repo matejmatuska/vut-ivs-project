@@ -181,12 +181,12 @@ namespace Calc
 
         private void buttonmul_Click(object sender, EventArgs e)
         {
-            onOp_Click('*', Operator.Mul);
+            onOp_Click('×', Operator.Mul);
         }
 
         private void buttondiv_Click(object sender, EventArgs e)
         {
-            onOp_Click('/', Operator.Div);
+            onOp_Click('÷', Operator.Div);
         }
 
         private void buttonexp_Click(object sender, EventArgs e)
@@ -213,7 +213,7 @@ namespace Calc
         {
             if (!IsNumberEmpty())
             {
-                onOp_Click('*', Operator.Mul);
+                onOp_Click('×', Operator.Mul);
             }
 
             button2_Click(sender, EventArgs.Empty);
