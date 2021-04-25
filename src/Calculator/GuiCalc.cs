@@ -13,7 +13,6 @@ namespace Calc
         private string current = "";
         private string history = "";
         private bool inFromlast;
-        private bool opEntered = false;
 
         public GuiKalk()
         {
@@ -208,6 +207,10 @@ namespace Calc
 
         private void button_sqr2_Click(object sender, EventArgs e)
         {
+            if (integer != "")
+            {
+                onOp_Click('*', Operator.Mul);
+            }
             button2_Click(sender, EventArgs.Empty);
             buttonsqr_Click(sender, EventArgs.Empty);
         }
