@@ -248,7 +248,7 @@ namespace Calc
 
         private void buttonend_Click(object sender, EventArgs e)
         {
-            if (textBoxFormula.Text == "")
+            if (textBoxFormula.Text == "" || IsNumberEmpty())
                 return; // no-op when nothing is entered
 
             eval.Append(number);
