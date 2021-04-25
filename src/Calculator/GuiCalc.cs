@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -27,7 +28,9 @@ namespace Calc
          */
         private void onNumber_Click(int number)
         {
-            try
+            if (textBoxCurrent.BackColor != SystemColors.ButtonFace)
+                textBoxCurrent.BackColor = SystemColors.ButtonFace;
+                try
             {
                 if (inFromlast)
                 {
@@ -55,6 +58,8 @@ namespace Calc
 
         private void onSign_Click(char symbol)
         {
+            if (textBoxCurrent.BackColor != SystemColors.ButtonFace)
+                textBoxCurrent.BackColor = SystemColors.ButtonFace;
             if (current == "")
             {
                 current = symbol.ToString();
@@ -93,8 +98,10 @@ namespace Calc
 
         public void showError(string message, string title)
         {
-            MessageBox.Show(message, title,
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            textBoxCurrent.Text = message;
+//            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            textBoxCurrent.BackColor = Color.FromArgb(255, 100, 100);
+            
         }
 
         /**
@@ -252,7 +259,19 @@ namespace Calc
                 return; // no-op when nothing is entered
 
             eval.Append(number);
-            number = eval.Eval().ToString(CultureInfo.InvariantCulture);
+            try
+            {
+                number = eval.Eval().ToString(CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                showError("Division by zero is undefined", "Byl pokus o dělení nulou");
+                current = "";
+                number = "";
+                eval.Reset();
+                return;
+            }
+
             textBoxCurrent.Text = number;
 
             history = Environment.NewLine + current + " = " + number;
