@@ -19,7 +19,7 @@ namespace Calc
             InitializeComponent();
             this.KeyPreview = true;
         }
-        
+
         /**
          * Method to change GUI textboxes and to send numbers to @see Evaluator.cs
          * @brief Takes given number and stores it in integer and current
@@ -30,16 +30,16 @@ namespace Calc
             try
             {
                 if (inFromlast)
-            {
-                current = "";
-                integer = "";
-            }
-            
-            current += number.ToString();
-            integer += number.ToString();
-            textBoxCurrent.Text = integer;
-            textBoxFormula.Text = current;
-            inFromlast = false;
+                {
+                    current = "";
+                    integer = "";
+                }
+
+                current += number.ToString();
+                integer += number.ToString();
+                textBoxCurrent.Text = integer;
+                textBoxFormula.Text = current;
+                inFromlast = false;
             }
             catch (Exception e)
             {
@@ -50,7 +50,6 @@ namespace Calc
 
         private void onOp_Click(char c, Operator op)
         {
-            
             current += c;
             textBoxFormula.Text = current;
             textBoxCurrent.Text = integer;
@@ -65,7 +64,7 @@ namespace Calc
         public void showError(string message, string title)
         {
             MessageBox.Show(message, title,
-            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /**
@@ -76,16 +75,15 @@ namespace Calc
          * @param Sender who initiated action (not used)
          * @param Event which event was initiated (not used)
          */
-        
         /**
          * @ingroup EventHandlers
          * @brief adds number 1 to current value
          */
         private void button1_Click(object sender, EventArgs e)
         {
-           onNumber_Click(1);
+            onNumber_Click(1);
         }
-        
+
         /**
          * @ingroup EventHandlers
          * @brief adds number 2 to current value
@@ -111,7 +109,7 @@ namespace Calc
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {   
+        {
             onNumber_Click(6);
         }
 
@@ -152,9 +150,9 @@ namespace Calc
 
         private void buttondiv_Click(object sender, EventArgs e)
         {
-            onOp_Click('/', Operator.Mul);
+            onOp_Click('/', Operator.Div);
         }
-        
+
         private void buttonexp_Click(object sender, EventArgs e)
         {
             onOp_Click('^', Operator.Pow);
@@ -164,17 +162,17 @@ namespace Calc
         {
             onOp_Click('√', Operator.Root);
         }
-        
+
         private void buttonmod_Click(object sender, EventArgs e)
         {
             onOp_Click('%', Operator.Mod);
         }
-        
+
         private void buttonFact_Click(object sender, EventArgs e)
         {
             onOp_Click('!', Operator.Fact);
         }
-        
+
         private void button_sqr2_Click(object sender, EventArgs e)
         {
             button2_Click(sender, EventArgs.Empty);
@@ -196,16 +194,16 @@ namespace Calc
 
         private void buttonend_Click(object sender, EventArgs e)
         {
-            if (textBoxFormula.Text == "") 
+            if (textBoxFormula.Text == "")
                 return; // no-op when nothing is entered
-            
+
             eval.Append(integer);
             integer = eval.Eval().ToString(CultureInfo.InvariantCulture);
             textBoxCurrent.Text = integer;
-                
+
             history = Environment.NewLine + current + " = " + integer;
             textBoxHistory.AppendText(history);
-                
+
             textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
             textBoxFormula.Text = "";
             current = integer;
@@ -307,21 +305,17 @@ namespace Calc
             integer = "";
             textBoxCurrent.Text = integer;
             textBoxFormula.Text = current;
-
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if(integer.Length == 0)
+            if (integer.Length == 0)
                 return;
-            
+
             current = current.Remove(current.Length - 1);
             integer = integer.Remove(integer.Length - 1);
             textBoxCurrent.Text = integer;
             textBoxFormula.Text = current;
         }
-
-
-
     }
 }
