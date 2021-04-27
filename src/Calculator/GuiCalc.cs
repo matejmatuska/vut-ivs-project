@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Calc
 {
+    /**
+     * @brief Controller and EventHandler for GUI
+     */
     public partial class GuiKalk : Form
     {
         private readonly Evaluator eval = new Evaluator();
@@ -14,18 +17,18 @@ namespace Calc
         private string current = "";
         private string history = "";
         private bool inFromlast;
-
+        
+        /**
+         * Method to Initziale Calculator windoww
+         * @brief Initziates all components and set KeyPreview to true.
+         */
         public GuiKalk()
         {
             InitializeComponent();
             KeyPreview = true;
         }
 
-        /**
-         * Method to change GUI textboxes and to send numbers to @see Evaluator.cs
-         * @brief Takes given number and stores it in integer and current
-         * @param number number which should be added
-         */
+
         private void onNumber_Click(int number)
         {
             if (textBoxCurrent.BackColor != SystemColors.ButtonFace)
@@ -46,7 +49,7 @@ namespace Calc
             }
             catch (Exception e)
             {
-                showError("Chyba", "Bude doděláno");
+                showError("Chyba");
                 throw;
             }
         }
@@ -95,8 +98,11 @@ namespace Calc
             number = "";
             inFromlast = false;
         }
-
-        public void showError(string message, string title)
+        /**
+         * @brief Shows error in currentBox
+         * @param string message -  message that should be displayed
+         */
+        public void showError(string message)
         {
             textBoxCurrent.Text = message;
 //            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -120,11 +126,7 @@ namespace Calc
         {
             onNumber_Click(1);
         }
-
-        /**
-         * @ingroup EventHandlers
-         * @brief adds number 2 to current value
-         */
+        
         private void button2_Click(object sender, EventArgs e)
         {
             onNumber_Click(2);
@@ -263,9 +265,10 @@ namespace Calc
             {
                 number = eval.Eval().ToString(CultureInfo.InvariantCulture);
             }
-            catch
-            {
-                showError("Division by zero is undefined", "Byl pokus o dělení nulou");
+             catch (Exception p)
+             {
+                 showError(p.Message);
+                    
                 current = "";
                 number = "";
                 eval.Reset();
@@ -394,7 +397,7 @@ namespace Calc
 
         private void buttonHelp_Click(object sender, EventArgs e)
         {
-            string Help = System.IO.File.ReadAllText(@"C:\Users\marti\vut-ivs-project\Help.txt");
+            string Help = System.IO.File.ReadAllText(@"Help.txt");
             MessageBox.Show(Help, "Help", MessageBoxButtons.OK, MessageBoxIcon.Question);
             
         }

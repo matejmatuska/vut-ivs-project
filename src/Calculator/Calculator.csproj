@@ -7,7 +7,7 @@
     <ProjectGuid>{D9B9F1B8-CDD7-479A-BF76-02E0291DD8A3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Calc</RootNamespace>
-    <AssemblyName>IVS-Kalkulačka</AssemblyName>
+    <AssemblyName>JMMM_Calculator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,8 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
