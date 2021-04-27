@@ -391,5 +391,12 @@ namespace Calc
             textBoxCurrent.Text = number;
             textBoxFormula.Text = current;
         }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            string Help = System.IO.File.ReadAllText(@"C:\Users\marti\vut-ivs-project\Help.txt");
+            MessageBox.Show(Help, "Help", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            
+        }
     }
 }

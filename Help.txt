@@ -1,0 +1,13 @@
+Quick Help
+This is quick help for calculator made by JMMM team.
+
+In main windows there are 3 text boxes.
+
+Textbox on top isfor history of yours calculations.
+TextBox in middle is for current equation, that you are solving in the moment.
+The lowest TextBox show your current number that you want to add to euqation.
+
+Buttons with numbers are for adding number to current number you want to add - You can click on them or use numpad for that purpose.
+Button with dot [ . ] is for setting decimal for previous number.
+Button with right arrow [ ] will delete last number in current number
+!! Previous numbers or operations cannot be deleted !!
