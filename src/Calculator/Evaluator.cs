@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using MyMathLib;
 
 namespace Calc
 {
     /**
-     * Enum containing supported mathematical operations, as well as special value "None" 
+     * Enum containing supported mathematical operations
      */
     enum Operator
     {
-        None,
         Sum,
         Sub,
         Mul,
@@ -21,27 +21,23 @@ namespace Calc
     }
 
     /**
-     * Basic math evaluator
+     * @brief Basic math expression evaluator
      *
-     * Numbers and operations are passed in as a sequence.
-     * Intermediate results are returned via callback.
-     *
-     * Due to the sequential nature of this class parentheses are not supported
+     * The expression to evaluate is appended to evaluator as a sequence of numbers and operators
+     * The whole expression can then be evaluated and result returned
      */
     class Evaluator
     {
-        private List<double> numbers = new List<double>();
-        private List<Operator> operators = new List<Operator>();
+        private readonly List<double> numbers = new List<double>();
+        private readonly List<Operator> operators = new List<Operator>();
 
         private bool awaitNumber = true;
 
         /**
-         * Append number num to the current calculation
+         * @brief Appends number to the current expression
          * 
-         * @param num The number to add to calculation, as string
-         * @throw Exception if num cannot be converted to number
-         * @throw Exception when two numbers were entered consecutively without an operator between them
-         * @return returns intermediate result as string
+         * @param num The number to add to expression
+         * @throw ArgumentException if num cannot be converted to double
          */
         public void Append(string num)
         {
@@ -49,7 +45,7 @@ namespace Calc
             {
                 if (awaitNumber)
                 {
-                    throw new Exception("Invalid number!"); //TODO handle invalid number
+                    throw new ArgumentException("Failed to convert argument num: " + num + " to double");
                 }
             }
 
@@ -57,11 +53,9 @@ namespace Calc
         }
 
         /**
-         * Appends operator to the current calculation,
-         * Operator.None can be entered to delete previously set operator.
+         * @brief Appends operator to the current expression
          * 
-         * @param op The operation to append
-         * @throws ArithmeticException if more than one operator is passed consecutively
+         * @param op The operator to append
          */
         public void Append(Operator op)
         {
@@ -69,6 +63,24 @@ namespace Calc
             awaitNumber = op != Operator.Fact;
         }
         
+        /**
+         * @brief Evaluates expression currently in evaluator
+         *
+         * Operator precedence (highest to lowest):
+         * Factorial
+         * Power
+         * Root
+         * Multiplication
+         * Division
+         * Modulo
+         * Addition
+         * Subtraction
+         *
+         * @note The expression is preserved and can be further appended to and/or evaluated again.
+         * To clear the expression use Reset()
+         * 
+         * @return The result of expression currently stored in evaluator instance
+         */
         public double Eval()
         {
             var precedence = new List<Operator>
@@ -130,16 +142,13 @@ namespace Calc
                     return MathLib.Root(b, a);
                 case Operator.Mod:
                     return MathLib.Mod(a, b);
-                case Operator.None:
-                    throw new Exception(
-                        "Two numbers without operator entered!"); // TODO handle two numbers without operator entered
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new InvalidEnumArgumentException();
             } 
         }
 
         /**
-         * Resets the evaluator to its initial state
+         * @brief Resets the evaluator to its initial state
          */
         public void Reset()
         {
