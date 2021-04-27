@@ -50,7 +50,7 @@ namespace MyMathLib
         {
             //dividing by 0 check
             if (x2 == 0)
-                throw new DivideByZeroException();
+                throw new DivideByZeroException("Division by zero is undefined");
 
             return x1 / x2;
         }
@@ -67,11 +67,11 @@ namespace MyMathLib
         {
             //negative number check
             if (x < 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Factorial is only defined on non-negative integers");
 
             //decimal number check
             if ((x - Math.Truncate(x)) != 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Factorial can be only full number");
 
             //factorial of zero is 1
             if (x == 0)
@@ -101,15 +101,15 @@ namespace MyMathLib
         {
             //negative power check
             if (n < 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Power can be only non-negative number");
 
             //zero power of the zero check
             if ((x == 0) && (n == 0))
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(message: "Vague expression");
 
             //decimal power check
             if ((n - Math.Truncate(n)) != 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Power can be only full number - use root instead");
 
             //zero power of any number is always equal to 1
             if (n == 0)
@@ -138,11 +138,11 @@ namespace MyMathLib
         {
             //zero base number check
             if ((n == 0) && (x != 0))
-                throw new DivideByZeroException();
+                throw new InvalidOperationException("The power can be zero only if the base is zero");
 
             //even base number and negative number check
             if (((n % 2) == 0) && x < 0) 
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("The base can be negative only if the power is odd");
             
             //zero root of zero is equal to zero
             if ((x == 0) && (n == 0))
@@ -166,7 +166,7 @@ namespace MyMathLib
             //dividing by zero check
             if (x2 == 0)
             {
-                throw new DivideByZeroException();
+                throw new DivideByZeroException(message: "Division by zero is undefined");
             }
 
             //calculates the remainder

@@ -258,7 +258,7 @@ namespace MSTest_Test_Project
             {
                 MathLib.Root(14, 0);
             }
-            catch (DivideByZeroException)
+            catch (InvalidOperationException)
             {
 
             }
