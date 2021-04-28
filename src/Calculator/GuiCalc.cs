@@ -371,6 +371,9 @@ namespace Calc
                 case Keys.Back:
                     buttonDelete_Click(sender, EventArgs.Empty);
                     break;
+                case Keys.Enter:
+                    buttonend_Click(sender, EventArgs.Empty);
+                    break;
             }
         }
 
