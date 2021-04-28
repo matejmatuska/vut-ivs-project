@@ -187,7 +187,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_67BE576D7F4B4AF4BCB177DB2DFDDED3"
             {
-            "SourcePath" = "8:..\\..\\Help.txt"
+            "SourcePath" = "8:..\\Help.txt"
             "TargetName" = "8:Help.txt"
             "Tag" = "8:"
             "Folder" = "8:_3E7DE3098C3246A5BE4460545E199C42"
@@ -207,7 +207,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CFD05EF002604B56B9A3074C806917EF"
             {
-            "SourcePath" = "8:..\\..\\uninstall.bat"
+            "SourcePath" = "8:uninstall.bat"
             "TargetName" = "8:uninstall.bat"
             "Tag" = "8:"
             "Folder" = "8:_3E7DE3098C3246A5BE4460545E199C42"
