@@ -14,7 +14,7 @@ namespace Calc
         private readonly Evaluator eval = new Evaluator();
 
         private string number = "";
-        private string current = "";
+        private string formula = "";
         private string history = "";
         private bool inFromlast;
         
@@ -38,14 +38,14 @@ namespace Calc
             {
                 if (inFromlast)
                 {
-                    current = "";
+                    formula = "";
                     this.number = "";
                 }
 
-                current += number.ToString();
+                formula += number.ToString();
                 this.number += number.ToString();
                 textBoxCurrent.Text = this.number;
-                textBoxFormula.Text = current;
+                textBoxFormula.Text = formula;
                 inFromlast = false;
             }
             catch (Exception e)
@@ -64,23 +64,23 @@ namespace Calc
         {
             if (textBoxCurrent.BackColor != SystemColors.ButtonFace)
                 textBoxCurrent.BackColor = SystemColors.ButtonFace;
-            if (current == "")
+            if (formula == "")
             {
-                current = symbol.ToString();
+                formula = symbol.ToString();
             }
             else if (number == "+" || number == "-")
             {
-                current = current.Remove(current.Length - 1, 1);
-                current += symbol;
+                formula = formula.Remove(formula.Length - 1, 1);
+                formula += symbol;
             }
             else
             {
-                current += symbol;
+                formula += symbol;
             }
 
             number = symbol.ToString();
 
-            textBoxFormula.Text = current;
+            textBoxFormula.Text = formula;
             textBoxCurrent.Text = number;
         }
 
@@ -89,8 +89,8 @@ namespace Calc
             if (IsNumberEmpty())
                 return;
 
-            current += c;
-            textBoxFormula.Text = current;
+            formula += c;
+            textBoxFormula.Text = formula;
             textBoxCurrent.Text = number;
 
             eval.Append(number);
@@ -114,14 +114,14 @@ namespace Calc
         /**
          * \defgroup EventHandlers
          * EventHandler methods for Clicking on buttons
-         * Adds string of number to "current" and "integer"
+         * Adds string of number to "formula" and "integer"
          * Updates Current text in GUI
          * @param Sender who initiated action (not used)
          * @param Event which event was initiated (not used)
          */
         /**
          * @ingroup EventHandlers
-         * @brief adds number 1 to current value
+         * @brief adds number 1 to formula value
          */
         private void button1_Click(object sender, EventArgs e)
         {
@@ -243,16 +243,16 @@ namespace Calc
         {
             if (inFromlast)
             {
-                current = "";
+                formula = "";
                 number = "";
             }
 
             if (number.Contains("."))
                 return;
 
-            current += ".";
+            formula += ".";
             number += ".";
-            textBoxCurrent.Text = current;
+            textBoxCurrent.Text = number;
             inFromlast = false;
         }
 
@@ -270,7 +270,7 @@ namespace Calc
              {
                  showError(p.Message);
                     
-                current = "";
+                formula = "";
                 number = "";
                 eval.Reset();
                 return;
@@ -278,12 +278,12 @@ namespace Calc
 
             textBoxCurrent.Text = number;
 
-            history = Environment.NewLine + current + " = " + number;
+            history = Environment.NewLine + formula + " = " + number;
             textBoxHistory.AppendText(history);
 
             textBoxCurrent.SelectionStart = textBoxCurrent.Text.Length;
             textBoxFormula.Text = "";
-            current = number;
+            formula = number;
             inFromlast = true;
 
             eval.Reset();
@@ -381,10 +381,10 @@ namespace Calc
         private void buttonReset_Click(object sender, EventArgs e)
         {
             eval.Reset();
-            current = "";
+            formula = "";
             number = "";
             textBoxCurrent.Text = number;
-            textBoxFormula.Text = current;
+            textBoxFormula.Text = formula;
             inFromlast = false;
         }
 
@@ -393,10 +393,10 @@ namespace Calc
             if (number.Length == 0)
                 return;
 
-            current = current.Remove(current.Length - 1);
+            formula = formula.Remove(formula.Length - 1);
             number = number.Remove(number.Length - 1);
             textBoxCurrent.Text = number;
-            textBoxFormula.Text = current;
+            textBoxFormula.Text = formula;
         }
 
         private void buttonHelp_Click(object sender, EventArgs e)
