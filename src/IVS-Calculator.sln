@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{D9B9F1B8-CDD7-479A-BF76-02E0291DD8A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest Test Project", "Tests\MSTest Test Project.csproj", "{5DE27E8D-D574-4A8E-A5B6-4FB514E06DEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5DE27E8D-D574-4A8E-A5B6-4FB514E06DEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB770B3F-827C-41EB-91CF-E51D9E7A412C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stdev", "Stdev\Stdev.csproj", "{44876324-44E6-45B6-B1F7-453119B4D792}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{8BDF88FA-25DA-44A5-9182-DBCF2E5CE9E7}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_JMMM_Calculator", "Setup\Setup.vdproj", "{8BDF88FA-25DA-44A5-9182-DBCF2E5CE9E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
