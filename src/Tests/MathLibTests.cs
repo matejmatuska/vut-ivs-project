@@ -152,7 +152,7 @@ namespace MSTest_Test_Project
             {
                 MathLib.Fact(-8);
             }
-            catch (ArgumentOutOfRangeException)
+            catch (InvalidOperationException)
             {
 
             }
@@ -161,7 +161,7 @@ namespace MSTest_Test_Project
             {
                 MathLib.Fact(5.258);
             }
-            catch (ArgumentOutOfRangeException)
+            catch (InvalidOperationException)
             {
 
             }
@@ -197,7 +197,7 @@ namespace MSTest_Test_Project
             {
                 MathLib.Pow(2, -5);
             }
-            catch (ArgumentOutOfRangeException)
+            catch (InvalidOperationException)
             {
 
             }
@@ -206,7 +206,7 @@ namespace MSTest_Test_Project
             {
                 MathLib.Pow(14, 2.5);
             }
-            catch (ArgumentOutOfRangeException)
+            catch (InvalidOperationException)
             {
 
             }
