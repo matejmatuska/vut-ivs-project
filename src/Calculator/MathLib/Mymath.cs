@@ -6,45 +6,45 @@ namespace MyMathLib
 
     public static class MathLib
     {
-        /*
-         * sums 2 double numbers together
-         *
-         *@param    x1, x2     numbers that you want to sum
-         *@return   the result of the sum in double
+        /**
+          @brief sums 2 double numbers together
+         
+          @param    x1, x2     numbers that you want to sum
+          @return   the result of the sum in double
          */
         public static double Sum(double x1, double x2)
         {
             return x1 + x2;
         }
 
-        /*
-         * subtracts 2 double numbers
-         *
-         *@param    x1, x2     numbers that you want to subtract
-         *@return   the result of the subtraction in double
+        /**
+          @brief subtracts 2 double numbers
+         
+          @param    x1, x2     numbers that you want to subtract
+          @return   the result of the subtraction in double
          */
         public static double Sub(double x1, double x2)
         {
             return x1 - x2;
         }
 
-        /*
-         * multiplies 2 double numbers
-         *
-         *@param    x1, x2     numbers that you want to multiply
-         *@return   the result of the multiplication in double
+        /**
+          @brief multiplies 2 double numbers
+         
+          @param    x1, x2     numbers that you want to multiply
+          @return   the result of the multiplication in double
          */
         public static double Mul(double x1, double x2)
         {
             return x1 * x2;
         }
 
-        /*
-         * divides 2 double numbers
-         *
-         *@param    x1, x2     numbers that you want to divide
-         *@return   the result of the multiplication in double
-         *          exception when dividing by 0
+        /**
+          @brief divides 2 double numbers
+         
+          @param    x1, x2     numbers that you want to divide
+          @return   the result of the multiplication in double
+                    exception when dividing by 0
          */
         public static double Div(double x1, double x2)
         {
@@ -55,13 +55,13 @@ namespace MyMathLib
             return x1 / x2;
         }
 
-        /*
-         * calculates factorial of double number
-         *
-         *@param    x     the number to calculate the factorial from
-         *@return   the factorial in double
-         *          exception when the number is less than 0
-         *          exception when the number is decimal
+        /**
+          @brief calculates factorial of double number
+         
+          @param    x     the number to calculate the factorial from
+          @return   the factorial in double
+                    exception when the number is less than 0
+                    exception when the number is decimal
          */
         public static double Fact(double x)
         {
@@ -87,15 +87,15 @@ namespace MyMathLib
             return result;
         }
 
-        /*
-         * calculates natural power of real number
-         *
-         *@param    x      base number
-         *@param    n      exponent
-         *@return   x raised to the n
-         *          exception when the exponent is less than 0
-         *          exception when the base number and exponent are 0
-         *          exeption when the exponent is decimal number
+        /**
+          @brief calculates natural power of real number
+          
+          @param    x      base number
+          @param    n      exponent
+          @return   x raised to the n
+                    exception when the exponent is less than 0
+                    exception when the base number and exponent are 0
+                    exeption when the exponent is decimal number
          */
         public static double Pow(double x, double n)
         {
@@ -125,14 +125,14 @@ namespace MyMathLib
             return result;
         }
 
-        /*
-         * calculates n-th root of the real number
-         *
-         *@param    x      base number
-         *@param    n      root
-         *@return   the x-th root of the number n
-         *          exception when the root is 0
-         *          exception when the root is even and base number is a negative number
+        /**
+          @brief calculates n-th root of the real number
+          
+          @param    x      base number
+          @param    n      root
+          @return   the x-th root of the number n
+                    exception when the root is 0
+                    exception when the root is even and base number is a negative number
          */
         public static double Root(double x, double n)
         {
@@ -148,18 +148,25 @@ namespace MyMathLib
             if ((x == 0) && (n == 0))
                 return 0;
 
-            //calculation of the root
+            //calculation of the root with negative base
+            if(x < 0)
+            {
+                x *= -1;
+                return -(double)Math.Pow(x, 1.0 / n);
+            }
+
+            //calculation of the root with non-negative base
             return (double)Math.Pow(x, 1.0 / n);
         }
 
 
-        /*
-        * calculates the modulo of two numbers 
-        *
-        *@param    x1   dividend
-        *@param    x2   divisor       
-        *@return   the ramainder of x1 / x2
-        *          exception when the x2 is equal to 0
+        /**
+         @brief calculates the modulo of two numbers 
+         
+         @param    x1   dividend
+         @param    x2   divisor       
+         @return   the ramainder of x1 / x2
+                   exception when the x2 is equal to 0
         */
         public static double Mod(double x1, double x2)
         {

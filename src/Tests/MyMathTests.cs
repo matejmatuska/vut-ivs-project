@@ -265,7 +265,7 @@ namespace MSTest_Test_Project
             //are equal
             //root(x,n) = n √x 
             Assert.AreEqual(7, MathLib.Root(49, 2));
-            Assert.AreEqual(3, MathLib.Root(27, 3));
+            Assert.AreEqual(-3, MathLib.Root(-27, 3));
             Assert.AreEqual(5, MathLib.Root(390625, 8));
             Assert.AreEqual(3.741657, MathLib.Root(14, 2), Accuracy);
             Assert.AreEqual(0, MathLib.Root(0, 0));
