@@ -25,6 +25,7 @@ namespace Calc
         public GuiKalk()
         {
             InitializeComponent();
+            CultureInfo.CurrentCulture = new CultureInfo("en-US", false);
             KeyPreview = true;
         }
 
