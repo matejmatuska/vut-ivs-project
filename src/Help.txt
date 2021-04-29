@@ -1,13 +1,29 @@
 Quick Help
+
 This is quick help for calculator made by JMMM team.
 
-In main windows there are 3 text boxes.
+In main window there are 3 text boxes.
 
-Textbox on top isfor history of yours calculations.
-TextBox in middle is for current equation, that you are solving in the moment.
-The lowest TextBox show your current number that you want to add to euqation.
+Textbox on top shows history of calculations.
+Textbox in the middle shows your current equation.
+Textbox at the bottom shows your last inputs.
 
-Buttons with numbers are for adding number to current number you want to add - You can click on them or use numpad for that purpose.
-Button with dot [ . ] is for setting decimal for previous number.
-Button with right arrow [ ] will delete last number in current number
-!! Previous numbers or operations cannot be deleted !!
+YOU CAN ENTER YOUR INPUT BY CLICKING ON BUTTONS OR USING YOUR KEYBOARD.
+USAGE: [OPERAND][OPERATOR][OPERAND]...[=]
+EXAMPLE: 1 + 2 =
+OPERANDS are numbers by your choice
+OPERATORS:
+2√	- square root operator
+^2	- square power operator
+√	- root operator
+^n	- power operator
+Fact!	- factorial
+mod	- operator modulo
+÷	- division operator
+×	- multiplication operator
+-	- subtraction operator
++	- addition operator
+ANOTHER BUTTONS:
+CE	- clear entry
+.	- add decimal point
+←	- delete last input
