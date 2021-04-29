@@ -4,8 +4,9 @@ INSTALLER_DIR=Setup\Release
 INSTALLER_NAME=Setup_JMMM_Calculator.msi
 
 BUILD_DIRS=Calculator\bin Calculator\obj Tests\bin Tests\obj Stdev\bin Stdev\obj Setup\Debug packages
-TMP_PACK_DIR=..\..\pack
-PACK_NAME=xmatus36_xmazak02_xpokor85_xschaf00.zip
+TMP_PACK_DIR=..\..\$(PACK_NAME)
+PACK_NAME=xmatus36_xmazak02_xpokor85_xschaf00
+PACK_ZIP_NAME=xmatus36_xmazak02_xpokor85_xschaf00.zip
 
 .PHONY: all pack clean run profile help
 
@@ -24,7 +25,7 @@ pack:
 	mkdir $(TMP_PACK_DIR)\repo
 	xcopy /s $(ROOT_DIR) $(TMP_PACK_DIR)\repo
 
-	cd $(TMP_PACK_DIR) && tar.exe -c -f ..\$(PACK_NAME) .
+	cd $(ROOT_DIR)\.. && tar.exe -c -f $(PACK_ZIP_NAME) $(PACK_NAME)
 
 	del $(TMP_PACK_DIR) /s /f /q 1>nul & rmdir $(TMP_PACK_DIR) /s /q
 
