@@ -170,7 +170,7 @@ namespace Calc
             this.buttonend.Location = new System.Drawing.Point(420, 529);
             this.buttonend.Name = "buttonend";
             this.buttonend.Size = new System.Drawing.Size(134, 46);
-            this.buttonend.TabIndex = 15;
+            this.buttonend.TabIndex = 0;
             this.buttonend.Text = "=";
             this.buttonend.UseVisualStyleBackColor = false;
             this.buttonend.Click += new System.EventHandler(this.buttonend_Click);
@@ -609,6 +609,7 @@ namespace Calc
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 600);
             this.Name = "GuiKalk";
+            this.Text = "JMMM Calculator";
             this.TransparencyKey = System.Drawing.Color.Blue;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GuiKalk_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
