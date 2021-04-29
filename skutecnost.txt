@@ -1,0 +1,6 @@
+Oproti původnímu plánu při zadání jsme správně neodhadli časovou náročnost vypracování projektu, ale při původním plánu na "nestíhání" byl vyhrazen čas.
+Vznikly problémy, se kterýmy nebylo počítáno v původním plánu.
+Finální komunikace probíhala přes Discord, která se ukázala, jako nejefektivnější cestou pro komunikaci. Naopak Jira byl použit nejméně. Doodle byl využíván kde očekávání.
+Vývojové prostředí vyhovělo plánu a polovina týmu pracovala pomocí VS19 a druhá pomocí Rider.
+
+

@@ -1,0 +1,4 @@
+xmazak02 100 (testy, profiling, príručka, help)
+xpokor85 110 (gui, mockupy, instalátor, Doxyfile, koordinace)
+xmatus36 110 (spracovanie výrazov, Makefile, Doxyfile, gui - controller uprávy, repository)
+xschaf00 80  (matematická knižnica)
